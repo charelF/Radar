@@ -30,6 +30,7 @@
 		3C1C32232341F634000C6B0E /* ActivityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewController.swift; sourceTree = "<group>"; };
 		3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		3C1C322723452805000C6B0E /* ActivityListViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewController2.swift; sourceTree = "<group>"; };
+		3C1C322923452F40000C6B0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +47,7 @@
 		3C1C3201234090C4000C6B0E = {
 			isa = PBXGroup;
 			children = (
+				3C1C322923452F40000C6B0E /* README.md */,
 				3C1C320C234090C5000C6B0E /* Radar */,
 				3C1C320B234090C5000C6B0E /* Products */,
 			);
