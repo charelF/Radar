@@ -8,11 +8,22 @@
 
 import Foundation
 
-//class Activity {
-//
-//    let name: String
-//    let description: String
-//
+class Activity {
+
+    let name: String
+    let description: String
+    
+    let emoji: [String:String] =
+        ["bike":"🚴",
+         "videogame":"🎮",
+         "boardgame":"🎲",
+         "mountainbike":"🚵"]
+    
+    let type: String
+    
+    // is called like this: to get an emoji: emoji[bike] --> returns the bike emoji
+    
+
 //    let languages: [String]
 //
 //    let type: String
@@ -35,4 +46,15 @@ import Foundation
 //        ) {
 //        <#statements#>
 //    }
-//}
+    
+    init(name: String, description: String, type: String) {
+        self.name = name
+        self.description = description
+        self.type = type
+    }
+    
+    
+    
+    
+}
+
