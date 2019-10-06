@@ -13,7 +13,7 @@
         <!--MapVC-->
         <scene sceneID="L5i-hd-IR5">
             <objects>
-                <viewController title="MapVC" id="iqP-S4-zhs" sceneMemberID="viewController">
+                <viewController title="MapVC" id="iqP-S4-zhs" customClass="ActivityMapViewController" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M6Z-BH-4LH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,14 +21,27 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1P0-BB-EzY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hL7-xe-1rL" appends="YES" id="uW0-42-cak"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JSQ-ce-wu9"/>
                     </view>
                     <tabBarItem key="tabBarItem" id="HtV-gM-4f2"/>
+                    <connections>
+                        <outlet property="mapLongPressOutlet" destination="hL7-xe-1rL" id="PYC-rf-jbo"/>
+                        <outlet property="mapView" destination="1P0-BB-EzY" id="OQc-Jn-pe5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDf-eO-fXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="hL7-xe-1rL">
+                    <connections>
+                        <action selector="mapLongPressAction:" destination="iqP-S4-zhs" id="Hyj-jh-BnI"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="69.565217391304358" y="-689.0625"/>
         </scene>

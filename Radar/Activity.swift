@@ -21,10 +21,10 @@ class Activity {
     
     let type: String
     
-    // is called like this: to get an emoji: emoji[bike] --> returns the bike emoji
+    // is called like this: to get an emoji: emoji[activity.type] --> returns the bike emoji
     
 
-//    let languages: [String]
+//    let languages: [String] // also display with emojis
 //
 //    let type: String
 //    let information: [String:Any]
@@ -37,6 +37,7 @@ class Activity {
 //
 //    let creationTime: Double
 //    let activityTime: Double
+    
 //
 //    init(name: String,
 //         description: String,
