@@ -6,6 +6,9 @@
 //  Copyright © 2019 Charel FELTEN. All rights reserved.
 //
 
+// a lot of the mapkit stuff is learned from
+// https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
+
 import UIKit
 import CoreLocation
 import MapKit
@@ -18,8 +21,16 @@ class ActivityMapViewController: UIViewController {
     // add long press gesture from object library and drag it from the the storyboard to here and tag it as outlet
     @IBOutlet var mapLongPressOutlet: UILongPressGestureRecognizer!
     
+    var activities: [Activity] = Activity.testActivities()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // also copied from mapkit tutorial
+        mapView.register(ActivityAnnotationView.self,
+                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
+        mapView.addAnnotations(activities)
 
         // Do any additional setup after loading the view.
     }
@@ -38,30 +49,17 @@ class ActivityMapViewController: UIViewController {
             
             // we will now move to the add activity view controller, as described in this article
             // https://appsandbiscuits.com/move-between-view-controllers-with-segues-ios-9-7e231159e8f4
-            
              performSegue(withIdentifier: "addActivitySegue", sender: self)
         }
     }
     
-    // this is the default implementation, which does not work on iphone as by default, popovers are displayed as fullscreen
-    // we have to work around this limitation
-//    @IBAction func displayPopover(_ sender: UIButton) {
-//        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "AddAcitvityPopoverViewController") // do not forget to override the identifier
-//        vc.modalPresentationStyle = .popover
-//        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-//        //popover.barButtonItem =
-//        present(vc, animated: true, completion:nil)
-//    }
     
-    /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

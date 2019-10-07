@@ -7,25 +7,21 @@
 //
 
 import UIKit
+import MapKit
 
 class ActivityListViewController: UITableViewController {
     
-    var activities: [Activity] = []
+//    var activities: [Activity] = []
+    var activities: [Activity] = Activity.testActivities()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
-        activities += [
-            Activity(name: "activity 1", description: "description 1", type: "bike"),
-            Activity(name: "activity 2", description: "description 2", type: "videogame"),
-            Activity(name: "activity 3", description: "description 3", type: "boardgame"),
-            Activity(name: "activity 4", description: "description 4", type: "bike"),
-            Activity(name: "activity 5", description: "description 5", type: "mountainbike")
-        ]
         
-        print(activities[0].name)
+        
+//        print(activities[0].name)
         
         
 

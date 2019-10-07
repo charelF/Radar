@@ -15,6 +15,11 @@ class AddAcitvityPopoverViewController: UIViewController {
     // the view itself:
     @IBOutlet weak var addActivityPopoverView: UIView!
     
+    // the activity type view inside the main view
+    @IBOutlet weak var activityTypeView: UIView!
+    
+    @IBOutlet weak var nextActivityTypeView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,9 +30,17 @@ class AddAcitvityPopoverViewController: UIViewController {
         // masks all content of uiview to its constraints, aka the rounded corners
         addActivityPopoverView.layer.masksToBounds = true
         
+        // same for the activity type view
+        activityTypeView.layer.cornerRadius = 10
+        activityTypeView.layer.masksToBounds = true
+        
+        nextActivityTypeView.layer.cornerRadius = 10
+        nextActivityTypeView.layer.masksToBounds = true
+        
     }
     
     
+    // cancel button on the top left
     @IBAction func closeAAPopoverView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

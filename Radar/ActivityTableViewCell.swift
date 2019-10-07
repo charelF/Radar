@@ -15,9 +15,9 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var activityDescription: UILabel!
     
     func setActivity(activity: Activity) {
-        activityIcon.text = activity.emoji[activity.type]
+        activityIcon.text = activity.emoji
         activityTitle.text = activity.name
-        activityDescription.text = activity.description
+        activityDescription.text = activity.desc
     }
     
 

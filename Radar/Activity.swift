@@ -7,13 +7,23 @@
 //
 
 import Foundation
+import MapKit
 
-class Activity {
+class Activity: NSObject, MKAnnotation {
+    
+    // activity adopts to these two protocols for it to be displayable on the map
+    // this requires the following properties: title, subtitle, coordinate
+    
+    let coordinate: CLLocationCoordinate2D
+    var title: String?
+    var subtitle: String?
 
     let name: String
-    let description: String
+    let desc: String
     
-    let emoji: [String:String] =
+    let emoji: String
+    
+    let emojiDictionary: [String:String] =
         ["bike":"🚴",
          "videogame":"🎮",
          "boardgame":"🎲",
@@ -48,14 +58,36 @@ class Activity {
 //        <#statements#>
 //    }
     
-    init(name: String, description: String, type: String) {
+    init(name: String,
+         desc: String,
+         type: String,
+         coordinate: CLLocationCoordinate2D) {
+        
         self.name = name
-        self.description = description
+        self.desc = desc
         self.type = type
+        // investigate why this is necessary, I have really no idea why swift sees
+        // the dictionary as an optional...
+        self.emoji = emojiDictionary[self.type] ?? "❌"
+        
+        
+        self.title = name
+        self.subtitle = desc
+        self.coordinate = coordinate
+        
+        super.init() //not sure if necessary
+    }
+    
+    
+    // just for test purposes
+    static func testActivities() -> [Activity] {
+        return [
+            Activity(name: "activity 1", desc: "description 1", type: "bike", coordinate: CLLocationCoordinate2D(latitude: 49.691622, longitude: 6.211935)),
+            Activity(name: "activity 5 luxb", desc: "description 5", type: "mountainbike", coordinate: CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935))
+        ]
     }
     
     
     
     
 }
-
