@@ -30,7 +30,7 @@ class ActivityMapViewController: UIViewController {
         print(mapLongPressOutlet.state.rawValue)
         
         
-        if mapLongPressOutlet.state == .ended {
+        if mapLongPressOutlet.state == .began {
             let currentFingerLocation = mapLongPressOutlet.location(in: mapView)
             let currentMapLocation = mapView.convert(currentFingerLocation, toCoordinateFrom: mapView)
             print(currentFingerLocation)
@@ -39,10 +39,20 @@ class ActivityMapViewController: UIViewController {
             // we will now move to the add activity view controller, as described in this article
             // https://appsandbiscuits.com/move-between-view-controllers-with-segues-ios-9-7e231159e8f4
             
-            // performSegue(withIdentifier: "addActivitySegue", sender: self)
+             performSegue(withIdentifier: "addActivitySegue", sender: self)
         }
     }
     
+    // this is the default implementation, which does not work on iphone as by default, popovers are displayed as fullscreen
+    // we have to work around this limitation
+//    @IBAction func displayPopover(_ sender: UIButton) {
+//        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "AddAcitvityPopoverViewController") // do not forget to override the identifier
+//        vc.modalPresentationStyle = .popover
+//        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+//        //popover.barButtonItem =
+//        present(vc, animated: true, completion:nil)
+//    }
     
     /*
     // MARK: - Navigation

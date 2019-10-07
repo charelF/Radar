@@ -17,6 +17,7 @@
 		3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */; };
 		3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322723452805000C6B0E /* ActivityListViewController2.swift */; };
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
+		3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		3C1C322723452805000C6B0E /* ActivityListViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewController2.swift; sourceTree = "<group>"; };
 		3C1C322923452F40000C6B0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
+		3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAcitvityPopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				3C1C320D234090C5000C6B0E /* AppDelegate.swift */,
 				3C1C320F234090C5000C6B0E /* ViewController.swift */,
 				3C1C3211234090C5000C6B0E /* Main.storyboard */,
+				3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */,
 				3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */,
 				3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */,
 				3C1C321F2341E669000C6B0E /* Activity.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
+				3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
 				3C1C3210234090C5000C6B0E /* ViewController.swift in Sources */,
 				3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */,
