@@ -19,6 +19,8 @@
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
 		3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
+		3CEA5A64234D1D2800B25189 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA5A63234D1D2800B25189 /* ActivityView.xib */; };
+		3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A65234D1EA300B25189 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAcitvityPopoverViewController.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
+		3CEA5A63234D1D2800B25189 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
+		3CEA5A65234D1EA300B25189 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +87,12 @@
 				3C1C3214234090C8000C6B0E /* Assets.xcassets */,
 				3C1C3216234090C8000C6B0E /* LaunchScreen.storyboard */,
 				3C1C3219234090C8000C6B0E /* Info.plist */,
+				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
+				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
 			);
 			path = Radar;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 /* End PBXGroup section */
 
@@ -146,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1C3218234090C8000C6B0E /* LaunchScreen.storyboard in Resources */,
+				3CEA5A64234D1D2800B25189 /* ActivityView.xib in Resources */,
 				3C1C3215234090C8000C6B0E /* Assets.xcassets in Resources */,
 				3C1C3213234090C5000C6B0E /* Main.storyboard in Resources */,
 			);
@@ -161,6 +169,7 @@
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
+				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
 				3C1C3210234090C5000C6B0E /* ViewController.swift in Sources */,
 				3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
