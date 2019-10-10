@@ -18,6 +18,9 @@ todo:
 - do a custom callout by desigining the view in the activityview.xib and then implementing that. tutorials: 
     - https://sweettutos.com/2016/03/16/how-to-completely-customise-your-map-annotations-callout-views/ (see example application we downloaded)
     - https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
+    
+10/10/19
+- before implementing the tutorial with the custom map annotaiton view, see if there is no conflict between these methods and then ones we copied previously from raywunderlich, e.g. understand difference between a MKAnnotationView and an MKMarkerAnnotationView and so on
 
 
 

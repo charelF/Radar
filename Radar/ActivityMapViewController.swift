@@ -9,17 +9,24 @@
 // a lot of the mapkit stuff is learned from
 // https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
 
+// some of the mapkit stuff is from a tutorial from:
+// https://sweettutos.com/2016/03/16/how-to-completely-customise-your-map-annotations-callout-views/
+
+
 import UIKit
 import CoreLocation
 import MapKit
 
-class ActivityMapViewController: UIViewController {
+class ActivityMapViewController: UIViewController/*, MKMapViewDelegate */{
 
     // add MKmapview and drag it also to here and tag it as an outlet
     @IBOutlet weak var mapView: MKMapView!
     
     // add long press gesture from object library and drag it from the the storyboard to here and tag it as outlet
     @IBOutlet var mapLongPressOutlet: UILongPressGestureRecognizer!
+    
+    // this VC becomes a mapview delegate
+//    self.mapView.delegate = self
     
     var activities: [Activity] = Activity.testActivities()
     
@@ -60,6 +67,23 @@ class ActivityMapViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
+    
+    
+//    func mapView(_ mapView: MKMapView, viewFor activity: MKAnnotation) -> MKAnnotationView? {
+//        if activity is MKUserLocation {
+//            return nil
+//        }
+//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+//        if annotationView == nil{
+//            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+//            annotationView?.canShowCallout = false
+//        }else{
+//            annotationView?.annotation = annotation
+//        }
+//        annotationView?.image = UIImage(named: "starbucks")
+//        return annotationView
+//    }
+//    }
     
 
 }

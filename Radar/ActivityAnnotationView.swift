@@ -17,7 +17,7 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
         willSet {
             // 1
             guard let activity = newValue as? Activity else { return }
-            canShowCallout = true
+            canShowCallout = false
             calloutOffset = CGPoint(x: -5, y: 5)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             // 2

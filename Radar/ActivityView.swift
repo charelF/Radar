@@ -14,7 +14,12 @@ import UIKit
 class ActivityView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var testLabel: UILabel!
+    
+    @IBOutlet weak var emojiLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionText: UITextView!
+    
     
     
     override init(frame: CGRect) {
@@ -33,6 +38,9 @@ class ActivityView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
         
     }
 }

@@ -27,7 +27,8 @@ class Activity: NSObject, MKAnnotation {
         ["bike":"🚴",
          "videogame":"🎮",
          "boardgame":"🎲",
-         "mountainbike":"🚵"]
+         "mountainbike":"🚵",
+         "soccer":"⚽"]
     
     let type: String
     
@@ -82,8 +83,8 @@ class Activity: NSObject, MKAnnotation {
     // just for test purposes
     static func testActivities() -> [Activity] {
         return [
-            Activity(name: "activity 1", desc: "description 1", type: "bike", coordinate: CLLocationCoordinate2D(latitude: 49.691622, longitude: 6.211935)),
-            Activity(name: "activity 5 luxb", desc: "description 5", type: "mountainbike", coordinate: CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935))
+            Activity(name: "Soccer practice", desc: "hi, we want to play some casual football matches and are looking for some volunteers to join us! ", type: "soccer", coordinate: CLLocationCoordinate2D(latitude: 49.691622, longitude: 6.211935)),
+            Activity(name: "dungeons and dragons", desc: "lets meet for some dnd games! We're a group of 3 people needing one more motivated person to join so we can play. If you are interested, join the activity and we can discuss details in the description", type: "boardgame", coordinate: CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935))
         ]
     }
     
