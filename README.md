@@ -23,6 +23,21 @@ todo:
 - before implementing the tutorial with the custom map annotaiton view, see if there is no conflict between these methods and then ones we copied previously from raywunderlich, e.g. understand difference between a MKAnnotationView and an MKMarkerAnnotationView and so on
 
 
+12/10/19
+some resources:
+
+https://stackoverflow.com/questions/49703257/mkannotationview-callout-accessory-is-not-getting-displayed-in-ios-11
+
+https://stackoverflow.com/questions/25631410/swift-different-images-for-annotation
+
+https://stackoverflow.com/questions/32581049/mapkit-ios-9-detailcalloutaccessoryview-usage
+
+https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
+
+https://stackoverflow.com/questions/30793315/customize-mkannotation-callout-view
+
+https://sweettutos.com/2016/03/16/how-to-completely-customise-your-map-annotations-callout-views/
+
 
 
 

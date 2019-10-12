@@ -26,11 +26,6 @@
                                     <outletCollection property="gestureRecognizers" destination="hL7-xe-1rL" appends="YES" id="uW0-42-cak"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYd-nJ-cRM" customClass="ActivityView" customModule="Radar" customModuleProvider="target">
-                                <rect key="frame" x="68" y="146" width="278" height="501"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JSQ-ce-wu9"/>
@@ -141,6 +136,7 @@
                         <outlet property="activityTypeView" destination="Evh-Gb-zcS" id="1IH-OF-RRV"/>
                         <outlet property="addActivityPopoverView" destination="ilZ-OE-Nlv" id="dvq-5k-1sC"/>
                         <outlet property="nextActivityTypeView" destination="LWZ-Wz-J2I" id="Ylu-kc-hxX"/>
+                        <outlet property="testView" destination="ImM-c7-ybL" id="1q9-Xx-3H6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0p-CB-pXK" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,7 +13,7 @@ import UIKit
 
 class ActivityView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    //@IBOutlet var contentView: UIView!
     
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -22,25 +22,25 @@ class ActivityView: UIView {
     
     
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        
-        Bundle.main.loadNibNamed("ActivityView", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        self.layer.cornerRadius = 10
-        self.layer.masksToBounds = true
-        
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        commonInit()
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        commonInit()
+//    }
+//
+//    private func commonInit() {
+//
+//        Bundle.main.loadNibNamed("ActivityView", owner: self, options: nil)
+//        addSubview(contentView)
+//        contentView.frame = self.bounds
+//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//
+//        self.layer.cornerRadius = 10
+//        self.layer.masksToBounds = true
+//
+//    }
 }

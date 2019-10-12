@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityView" customModule="Radar" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="HC8-3G-GOo"/>
+                <outlet property="activityView" destination="iN0-l3-epB" id="6x8-Tj-X9B"/>
                 <outlet property="dateLabel" destination="Y4c-3w-3TB" id="JbA-6J-CMa"/>
                 <outlet property="descriptionText" destination="Yhl-4S-CGc" id="xEk-cP-Szt"/>
                 <outlet property="emojiLabel" destination="7LJ-ax-Z9Y" id="Nen-yD-oFe"/>

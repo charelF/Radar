@@ -17,7 +17,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ActivityMapViewController: UIViewController/*, MKMapViewDelegate */{
+class ActivityMapViewController: UIViewController, MKMapViewDelegate {
 
     // add MKmapview and drag it also to here and tag it as an outlet
     @IBOutlet weak var mapView: MKMapView!
@@ -25,13 +25,15 @@ class ActivityMapViewController: UIViewController/*, MKMapViewDelegate */{
     // add long press gesture from object library and drag it from the the storyboard to here and tag it as outlet
     @IBOutlet var mapLongPressOutlet: UILongPressGestureRecognizer!
     
-    // this VC becomes a mapview delegate
-//    self.mapView.delegate = self
+    
     
     var activities: [Activity] = Activity.testActivities()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // this VC becomes a mapview delegate
+        self.mapView.delegate = self
         
         // also copied from mapkit tutorial
         mapView.register(ActivityAnnotationView.self,
@@ -73,7 +75,7 @@ class ActivityMapViewController: UIViewController/*, MKMapViewDelegate */{
 //        if activity is MKUserLocation {
 //            return nil
 //        }
-//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+//        var activityView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
 //        if annotationView == nil{
 //            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
 //            annotationView?.canShowCallout = false
@@ -85,5 +87,26 @@ class ActivityMapViewController: UIViewController/*, MKMapViewDelegate */{
 //    }
 //    }
     
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//
+//
+//        let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
+//        let calloutView = views?[0] as! ActivityView
+//        calloutView.titleLabel.text = "test"
+//        calloutView.emojiLabel.text = "test"
+//        calloutView.dateLabel.text = "test"
+//        calloutView.descriptionText.text = "test"
+//
+////        let button = UIButton(frame: calloutView.starbucksPhone.frame)
+////        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
+////        calloutView.addSubview(button)
+////         3
+////        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
+////        view.addSubview(calloutView)
+////        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+//    }
+
 
 }
+
+
