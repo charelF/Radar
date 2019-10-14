@@ -36,10 +36,11 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.delegate = self
         
         // also copied from mapkit tutorial
-        mapView.register(ActivityAnnotationView.self,
-                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         mapView.addAnnotations(activities)
+        
+        print("viewDidLoad called")
 
         // Do any additional setup after loading the view.
     }
@@ -65,10 +66,10 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
     
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//    }
     
     
 //    func mapView(_ mapView: MKMapView, viewFor activity: MKAnnotation) -> MKAnnotationView? {
@@ -91,22 +92,112 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
 //
 //
 //        let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
-//        let calloutView = views?[0] as! ActivityView
-//        calloutView.titleLabel.text = "test"
-//        calloutView.emojiLabel.text = "test"
-//        calloutView.dateLabel.text = "test"
-//        calloutView.descriptionText.text = "test"
+//        let activityView = views?[0] as! ActivityView
+//        activityView.titleLabel.text = "test"
+//        activityView.emojiLabel.text = "test"
+//        activityView.dateLabel.text = "test"
+//        activityView.descriptionText.text = "test"
 //
-////        let button = UIButton(frame: calloutView.starbucksPhone.frame)
+////        let button = UIButton(frame: activityView.starbucksPhone.frame)
 ////        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
-////        calloutView.addSubview(button)
+////        activityView.addSubview(button)
 ////         3
-////        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
-////        view.addSubview(calloutView)
+////        activityView.center = CGPoint(x: view.bounds.size.width / 2, y: -activityView.bounds.size.height*0.52)
+////        view.addSubview(activityView)
 ////        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
 //    }
 
 
+
+    
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//
+//        print("function mapView viewFor annotation called")
+//        if annotation is MKUserLocation
+//        {
+//            return nil
+//        }
+//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+//        if annotationView == nil{
+//            annotationView = ActivityAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+//            annotationView?.canShowCallout = false
+//        }else{
+//            annotationView?.annotation = annotation
+//        }
+//        annotationView?.image = UIImage(named: "starbucks")
+//        return annotationView
+//    }
+    
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//
+//        print("function mapView viewFor annotation called")
+////        if annotation is MKUserLocation
+////        {
+////            return nil
+////        }
+//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+//        if annotationView == nil{
+//            annotationView = ActivityAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+//            annotationView?.canShowCallout = false
+//        }else{
+//            annotationView?.annotation = annotation
+//        }
+//        annotationView?.image = UIImage(named: "starbucks")
+//        return annotationView
+//    }
+    
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView)
+    {
+        //view.canShowCallout = false
+        print("function mapView called")
+        // 1
+//        if view.annotation is MKUserLocation
+//        {
+//            // Don't proceed with custom callout
+//            print("quitted here")
+//            return
+//        }
+        // 2
+        let activity = view.annotation as! Activity
+        let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
+        let activityView = views?[0] as! ActivityView
+        
+        // mapping activity properties to activity view ui elements
+        activityView.titleLabel.text = activity.name
+        activityView.emojiLabel.text = activity.emoji
+        activityView.dateLabel.text = "this afternoon"
+        activityView.descriptionTextView.text = activity.desc
+
+//        let button = UIButton(frame: activityView.starbucksPhone.frame)
+//        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
+//        activityView.addSubview(button)
+        // 3
+        
+        
+        activityView.center = CGPoint(x: view.bounds.size.width / 2, y: -activityView.bounds.size.height*0.37)
+        view.addSubview(activityView)
+        
+        // ugly way of doing it but it does what it should do, i.e. center the opening activityView
+        // instead of centering the annotation pin
+        var annotationCoordinate = view.annotation?.coordinate
+        annotationCoordinate?.latitude += 0.2
+        mapView.setCenter(annotationCoordinate!, animated: true)
+        print("arrived here")
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view is ActivityAnnotationView {
+            for subview in view.subviews {
+                // circumvents the problem of the annotation being removed, however it does not
+                // solve the actual bug: why it was removed here, and not in the example
+                if subview is ActivityView {
+                    subview.removeFromSuperview()
+                }
+            }
+        }
+    }
 }
 
 

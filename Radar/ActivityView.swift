@@ -15,12 +15,14 @@ class ActivityView: UIView {
 
     //@IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var emojiLabel: UILabel!
+//    @IBOutlet weak var emojiLabel: UILabel!
+//    @IBOutlet weak var dateLabel: UILabel!
+//    @IBOutlet weak var descriptionText: UITextView!
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionText: UITextView!
-    
-    
+    @IBOutlet weak var descriptionTextView: UITextView!
     
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)

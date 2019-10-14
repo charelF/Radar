@@ -39,5 +39,14 @@ https://stackoverflow.com/questions/30793315/customize-mkannotation-callout-view
 https://sweettutos.com/2016/03/16/how-to-completely-customise-your-map-annotations-callout-views/
 
 
+14/10/19
+
+activityView uiView finally works as expected.
+left to do:
+- finalise the design of the activity view (content, size, shape, animation, color, ...)
+- ios 13 seems to cause a problem with the map long press action, also probably remove this custom long press popup an instead use the default (fullscreen) popover
+- clean project, remove unecessary code and files.
+
+
 
 
