@@ -26,7 +26,7 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
             markerTintColor = UIColor(red:1, green: 1, blue: 1, alpha: 1)
             glyphText = String(activity.emoji)
             
-            titleVisibility = .adaptive
+            titleVisibility = .hidden
             subtitleVisibility = .hidden
 //
 //

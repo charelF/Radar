@@ -18,6 +18,8 @@
 		3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322723452805000C6B0E /* ActivityListViewController2.swift */; };
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
 		3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */; };
+		3C2E674B235624E5001F4F10 /* ActivityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674A235624E5001F4F10 /* ActivityMapView.swift */; };
+		3C2E674D23564C44001F4F10 /* ActivityViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
 		3CEA5A64234D1D2800B25189 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA5A63234D1D2800B25189 /* ActivityView.xib */; };
 		3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A65234D1EA300B25189 /* ActivityView.swift */; };
@@ -38,6 +40,8 @@
 		3C1C322923452F40000C6B0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAcitvityPopoverViewController.swift; sourceTree = "<group>"; };
+		3C2E674A235624E5001F4F10 /* ActivityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapView.swift; sourceTree = "<group>"; };
+		3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewWrapperView.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
 		3CEA5A63234D1D2800B25189 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		3CEA5A65234D1EA300B25189 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -88,7 +92,9 @@
 				3C1C3216234090C8000C6B0E /* LaunchScreen.storyboard */,
 				3C1C3219234090C8000C6B0E /* Info.plist */,
 				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
+				3C2E674A235624E5001F4F10 /* ActivityMapView.swift */,
 				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
+				3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */,
 			);
 			path = Radar;
 			sourceTree = "<group>";
@@ -166,12 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2E674D23564C44001F4F10 /* ActivityViewWrapperView.swift in Sources */,
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
 				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
 				3C1C3210234090C5000C6B0E /* ViewController.swift in Sources */,
 				3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */,
+				3C2E674B235624E5001F4F10 /* ActivityMapView.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
 				3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */,
 				3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */,

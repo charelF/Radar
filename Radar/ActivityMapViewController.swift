@@ -72,98 +72,26 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
 //    }
     
     
-//    func mapView(_ mapView: MKMapView, viewFor activity: MKAnnotation) -> MKAnnotationView? {
-//        if activity is MKUserLocation {
-//            return nil
-//        }
-//        var activityView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
-//        if annotationView == nil{
-//            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
-//            annotationView?.canShowCallout = false
-//        }else{
-//            annotationView?.annotation = annotation
-//        }
-//        annotationView?.image = UIImage(named: "starbucks")
-//        return annotationView
-//    }
-//    }
     
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//
-//
-//        let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
-//        let activityView = views?[0] as! ActivityView
-//        activityView.titleLabel.text = "test"
-//        activityView.emojiLabel.text = "test"
-//        activityView.dateLabel.text = "test"
-//        activityView.descriptionText.text = "test"
-//
-////        let button = UIButton(frame: activityView.starbucksPhone.frame)
-////        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
-////        activityView.addSubview(button)
-////         3
-////        activityView.center = CGPoint(x: view.bounds.size.width / 2, y: -activityView.bounds.size.height*0.52)
-////        view.addSubview(activityView)
-////        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-//    }
-
-
-
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        print("function mapView viewFor annotation called")
-//        if annotation is MKUserLocation
-//        {
-//            return nil
-//        }
-//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
-//        if annotationView == nil{
-//            annotationView = ActivityAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
-//            annotationView?.canShowCallout = false
-//        }else{
-//            annotationView?.annotation = annotation
-//        }
-//        annotationView?.image = UIImage(named: "starbucks")
-//        return annotationView
-//    }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        print("function mapView viewFor annotation called")
-////        if annotation is MKUserLocation
-////        {
-////            return nil
-////        }
-//        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
-//        if annotationView == nil{
-//            annotationView = ActivityAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
-//            annotationView?.canShowCallout = false
-//        }else{
-//            annotationView?.annotation = annotation
-//        }
-//        annotationView?.image = UIImage(named: "starbucks")
-//        return annotationView
-//    }
     
-    func mapView(_ mapView: MKMapView,
-                 didSelect view: MKAnnotationView)
-    {
-        //view.canShowCallout = false
-        print("function mapView called")
-        // 1
-//        if view.annotation is MKUserLocation
-//        {
-//            // Don't proceed with custom callout
-//            print("quitted here")
-//            return
-//        }
-        // 2
+    
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        
+//        let bundle = Bundle(for: self)
+//        let nib = UINib(nibName: String(describing:self), bundle: bundle)
+//        return nib.instantiate(withOwner: nil, options: nil).first as! MyView
+        
+            
         let activity = view.annotation as! Activity
         let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
         let activityView = views?[0] as! ActivityView
         
         // mapping activity properties to activity view ui elements
+        print(activity.name)
         activityView.titleLabel.text = activity.name
         activityView.emojiLabel.text = activity.emoji
         activityView.dateLabel.text = "this afternoon"
