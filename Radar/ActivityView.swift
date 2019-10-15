@@ -46,8 +46,24 @@ class ActivityView: UIView {
         super.init(coder: aDecoder)
         print("this initialiser was called")
         
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
+//
+//        self.layer.shadowPath =
+//              UIBezierPath(roundedRect: self.bounds,
+//              cornerRadius: self.layer.cornerRadius).cgPath
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOpacity = 0.5
+//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        self.layer.shadowRadius = 1
+//        self.layer.masksToBounds = false
+        
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.5
+        
+        //elf.layer.shadowOffset = CGSize(width: 10, height: 10)
+        
+        //self.layer.bounds = CGRect(x:0, y:0, width: 250, height: 500)
 //        commonInit()
     }
 //
