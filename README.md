@@ -44,8 +44,15 @@ https://sweettutos.com/2016/03/16/how-to-completely-customise-your-map-annotatio
 activityView uiView finally works as expected.
 left to do:
 - finalise the design of the activity view (content, size, shape, animation, color, ...)
+
+
+
+16/10/19
+left to do:
+- add activity view, give users the choice to specify a fixed time or a timespan like "afternoon"
 - ios 13 seems to cause a problem with the map long press action, also probably remove this custom long press popup an instead use the default (fullscreen) popover
 - clean project, remove unecessary code and files.
+
 
 
 

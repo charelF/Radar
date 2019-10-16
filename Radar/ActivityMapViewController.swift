@@ -96,22 +96,24 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
         activityView.emojiLabel.text = activity.emoji
         activityView.dateLabel.text = "this afternoon"
         activityView.descriptionTextView.text = activity.desc
+        
+        // adding the view
+        view.addSubview(activityView)
 
 //        let button = UIButton(frame: activityView.starbucksPhone.frame)
 //        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
 //        activityView.addSubview(button)
         // 3
         
+        // we center the activity view a bit on the annotation (actually a bit lower)
+        activityView.center = CGPoint(x: view.bounds.size.width / 2, y: view.bounds.size.height*0.37)
         
-        activityView.center = CGPoint(x: view.bounds.size.width / 2, y: -activityView.bounds.size.height*0.37)
-        view.addSubview(activityView)
-        
-        // ugly way of doing it but it does what it should do, i.e. center the opening activityView
-        // instead of centering the annotation pin
-        var annotationCoordinate = view.annotation?.coordinate
-        annotationCoordinate?.latitude += 0.2
-        mapView.setCenter(annotationCoordinate!, animated: true)
-        print("arrived here")
+        // we center the map on a point that is 50px above the annotation so that the activity view is more centered
+        var pointOfAnnotationCoord = mapView.convert((view.annotation?.coordinate)!, toPointTo: mapView)
+        pointOfAnnotationCoord.y -= 50
+        let coordOfPoint = mapView.convert(pointOfAnnotationCoord, toCoordinateFrom: mapView)
+        mapView.setCenter(coordOfPoint, animated: true)
+//        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
     
     

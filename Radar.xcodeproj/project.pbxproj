@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3C1C320E234090C5000C6B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C320D234090C5000C6B0E /* AppDelegate.swift */; };
-		3C1C3210234090C5000C6B0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C320F234090C5000C6B0E /* ViewController.swift */; };
 		3C1C3213234090C5000C6B0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1C3211234090C5000C6B0E /* Main.storyboard */; };
 		3C1C3215234090C8000C6B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C1C3214234090C8000C6B0E /* Assets.xcassets */; };
 		3C1C3218234090C8000C6B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1C3216234090C8000C6B0E /* LaunchScreen.storyboard */; };
@@ -20,6 +19,7 @@
 		3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */; };
 		3C2E674B235624E5001F4F10 /* ActivityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674A235624E5001F4F10 /* ActivityMapView.swift */; };
 		3C2E674D23564C44001F4F10 /* ActivityViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */; };
+		3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
 		3CEA5A64234D1D2800B25189 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA5A63234D1D2800B25189 /* ActivityView.xib */; };
 		3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A65234D1EA300B25189 /* ActivityView.swift */; };
@@ -28,7 +28,6 @@
 /* Begin PBXFileReference section */
 		3C1C320A234090C5000C6B0E /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1C320D234090C5000C6B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C1C320F234090C5000C6B0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3C1C3212234090C5000C6B0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C1C3214234090C8000C6B0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C1C3217234090C8000C6B0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAcitvityPopoverViewController.swift; sourceTree = "<group>"; };
 		3C2E674A235624E5001F4F10 /* ActivityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapView.swift; sourceTree = "<group>"; };
 		3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewWrapperView.swift; sourceTree = "<group>"; };
+		3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
 		3CEA5A63234D1D2800B25189 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		3CEA5A65234D1EA300B25189 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 				3C1C32232341F634000C6B0E /* ActivityListViewController.swift */,
 				3C1C322723452805000C6B0E /* ActivityListViewController2.swift */,
 				3C1C320D234090C5000C6B0E /* AppDelegate.swift */,
-				3C1C320F234090C5000C6B0E /* ViewController.swift */,
 				3C1C3211234090C5000C6B0E /* Main.storyboard */,
 				3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */,
 				3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */,
@@ -92,6 +91,7 @@
 				3C1C3216234090C8000C6B0E /* LaunchScreen.storyboard */,
 				3C1C3219234090C8000C6B0E /* Info.plist */,
 				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
+				3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */,
 				3C2E674A235624E5001F4F10 /* ActivityMapView.swift */,
 				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
 				3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */,
@@ -177,7 +177,7 @@
 				3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
 				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
-				3C1C3210234090C5000C6B0E /* ViewController.swift in Sources */,
+				3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */,
 				3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */,
 				3C2E674B235624E5001F4F10 /* ActivityMapView.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
