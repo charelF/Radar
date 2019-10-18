@@ -14,11 +14,8 @@
 		3C1C32202341E669000C6B0E /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C321F2341E669000C6B0E /* Activity.swift */; };
 		3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C32232341F634000C6B0E /* ActivityListViewController.swift */; };
 		3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */; };
-		3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322723452805000C6B0E /* ActivityListViewController2.swift */; };
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
 		3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */; };
-		3C2E674B235624E5001F4F10 /* ActivityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674A235624E5001F4F10 /* ActivityMapView.swift */; };
-		3C2E674D23564C44001F4F10 /* ActivityViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */; };
 		3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */; };
 		3C2E67512358B726001F4F10 /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E67502358B726001F4F10 /* AddActivityViewController.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
@@ -36,12 +33,9 @@
 		3C1C321F2341E669000C6B0E /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		3C1C32232341F634000C6B0E /* ActivityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewController.swift; sourceTree = "<group>"; };
 		3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
-		3C1C322723452805000C6B0E /* ActivityListViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewController2.swift; sourceTree = "<group>"; };
 		3C1C322923452F40000C6B0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAcitvityPopoverViewController.swift; sourceTree = "<group>"; };
-		3C2E674A235624E5001F4F10 /* ActivityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapView.swift; sourceTree = "<group>"; };
-		3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewWrapperView.swift; sourceTree = "<group>"; };
 		3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
 		3C2E67502358B726001F4F10 /* AddActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
@@ -81,27 +75,32 @@
 			isa = PBXGroup;
 			children = (
 				3C1C32232341F634000C6B0E /* ActivityListViewController.swift */,
-				3C1C322723452805000C6B0E /* ActivityListViewController2.swift */,
-				3C1C320D234090C5000C6B0E /* AppDelegate.swift */,
-				3C1C3211234090C5000C6B0E /* Main.storyboard */,
 				3C2E67502358B726001F4F10 /* AddActivityViewController.swift */,
 				3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */,
 				3C1C32302349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift */,
 				3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */,
 				3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */,
 				3C1C321F2341E669000C6B0E /* Activity.swift */,
-				3C1C3214234090C8000C6B0E /* Assets.xcassets */,
-				3C1C3216234090C8000C6B0E /* LaunchScreen.storyboard */,
-				3C1C3219234090C8000C6B0E /* Info.plist */,
 				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
 				3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */,
-				3C2E674A235624E5001F4F10 /* ActivityMapView.swift */,
 				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
-				3C2E674C23564C44001F4F10 /* ActivityViewWrapperView.swift */,
+				3C1C320D234090C5000C6B0E /* AppDelegate.swift */,
+				3C1C3219234090C8000C6B0E /* Info.plist */,
+				3C1C3214234090C8000C6B0E /* Assets.xcassets */,
+				3C5BE194235A26BB005C8862 /* Storyboard */,
 			);
 			path = Radar;
 			sourceTree = "<group>";
 			usesTabs = 0;
+		};
+		3C5BE194235A26BB005C8862 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3C1C3211234090C5000C6B0E /* Main.storyboard */,
+				3C1C3216234090C8000C6B0E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -175,14 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C2E674D23564C44001F4F10 /* ActivityViewWrapperView.swift in Sources */,
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C1C32312349E3CA000C6B0E /* AddAcitvityPopoverViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
 				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
 				3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */,
-				3C1C322823452805000C6B0E /* ActivityListViewController2.swift in Sources */,
-				3C2E674B235624E5001F4F10 /* ActivityMapView.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
 				3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */,
 				3C2E67512358B726001F4F10 /* AddActivityViewController.swift in Sources */,
