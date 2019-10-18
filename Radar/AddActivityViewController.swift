@@ -57,7 +57,7 @@ class AddActivityViewController: UIViewController, UIPickerViewDelegate, UIPicke
         if component == 0 {
             // refresh and reset 2nd component everytime another 1st component is chosen
             pickerView.reloadComponent(1)
-            //pickerView.selectRow(0, inComponent: 1, animated: true)
+            pickerView.selectRow(0, inComponent: 1, animated: true)
 
             // return the first value of the tuple (so the category name) at index row
             return pickerData[row].0
@@ -74,6 +74,9 @@ class AddActivityViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
             pickerView.reloadComponent(1)
+            pickerView.selectRow(0, inComponent: 1, animated: true)
+            let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
+            print(pickerData[selectedRowInFirstComponent].1[0]) // last subscript is 0, because we reset comp 2 to first element
         } else {
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
 
@@ -88,7 +91,7 @@ class AddActivityViewController: UIViewController, UIPickerViewDelegate, UIPicke
 //            pickerLabel = UILabel()
 //            pickerLabel?.font = UIFont.systemFont(ofSize: 20.0)
 //        }
-//        
+//
 //        if component == 0 {
 //            pickerLabel?.textAlignment = .right
 //            pickerLabel?.text = (pickerLabel?.text ?? "none") + "         "
