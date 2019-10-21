@@ -13,7 +13,7 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
 
     @IBOutlet weak var typePicker: UIPickerView!
     var pickerData: [(String,[String])] = []
-    var pickerValue: String? = nil
+    var pickerValue: (String?,String?) = (nil,nil)
     
     
     @IBOutlet weak var titleField: UITextField!
@@ -88,13 +88,15 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
             //print(pickerData[selectedRowInFirstComponent].1[0]) // last subscript is 0, because we reset comp 2 to first element
             
-            pickerValue = pickerData[selectedRowInFirstComponent].1[0]
+            //pickerValue = pickerData[selectedRowInFirstComponent].1[0]
+            pickerValue = (pickerData[selectedRowInFirstComponent].0, pickerData[selectedRowInFirstComponent].1[0])
         } else {
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
 
             print(pickerData[selectedRowInFirstComponent].1[row])
             
-            pickerValue = pickerData[selectedRowInFirstComponent].1[row]
+            //pickerValue = pickerData[selectedRowInFirstComponent].1[row]
+            pickerValue = (pickerData[selectedRowInFirstComponent].0, pickerData[selectedRowInFirstComponent].1[row])
         }
     }
     
@@ -148,10 +150,22 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
             }
         }
         
-        print(date, time, pickerValue, titleField.text, descriptionField.text, mapCoordinates)
+        //print(date, time, pickerValue, titleField.text, descriptionField.text, mapCoordinates)
+        
+        // at this point, tell the user if some values are missing
+        
+        let name = titleField.text ?? "no name"
+        let desc = descriptionField.text ?? "no description"
+        let domain = pickerValue.0 ?? "no domain"
+        let type = pickerValue.1 ?? "no type"
+        let coordinates = mapCoordinates ?? CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935)
+        ActivityModel.global.createActivity(name:  name, description: desc, domain: domain, type: type, time: time, date: date, coordinates: coordinates)
         
         
+        print("activity was created")
+        print(ActivityModel.global.activityList.count)
         
+        // everything seems to work, just the map view controllers (and the others) are not updated
         
         dismiss(animated: true, completion: nil)
     }

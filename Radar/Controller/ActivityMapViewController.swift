@@ -29,7 +29,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
     
     
     
-    var activities: [Activity] = Activity.testActivities()
+    var activities: [Activity] = ActivityModel.global.activityList
     
     override func viewDidLoad() {
         super.viewDidLoad()

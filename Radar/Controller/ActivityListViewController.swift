@@ -12,7 +12,7 @@ import MapKit
 class ActivityListViewController: UITableViewController {
     
 //    var activities: [Activity] = []
-    var activities: [Activity] = Activity.testActivities()
+    var activities: [Activity] = ActivityModel.global.activityList
 
     override func viewDidLoad() {
         super.viewDidLoad()
