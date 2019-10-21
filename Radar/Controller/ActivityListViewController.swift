@@ -67,7 +67,6 @@ class ActivityListViewController: UITableViewController {
         return true
     }
     */
-
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

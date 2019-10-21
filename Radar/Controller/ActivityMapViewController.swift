@@ -25,6 +25,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
     // add long press gesture from object library and drag it from the the storyboard to here and tag it as outlet
     @IBOutlet var mapLongPressOutlet: UILongPressGestureRecognizer!
     
+    var mapCoordinates: CLLocationCoordinate2D? = nil
+    
     
     
     var activities: [Activity] = Activity.testActivities()
@@ -57,6 +59,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
             print(currentFingerLocation)
             print(currentMapLocation) // works as expected
             
+            mapCoordinates = currentMapLocation
+            
             // we will now move to the add activity view controller, as described in this article
             // https://appsandbiscuits.com/move-between-view-controllers-with-segues-ios-9-7e231159e8f4
              performSegue(withIdentifier: "addActivitySegue", sender: self)
@@ -66,10 +70,19 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
     
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let navigationController = segue.destination as? UINavigationController {
+            if let receiver = navigationController.topViewController as? AddActivityTableViewController {
+            
+                if mapCoordinates == nil {
+                    print("problem")
+                } else {
+                    receiver.mapCoordinates = mapCoordinates
+                }
+            }
+        }
+    }
     
     
     

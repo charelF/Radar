@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 
+// activity has to be a class because of the limitations and inheritance, but maybe one way of doing it is to create a new class called ActivityAnnotation that
+// contains an Activity? not sure...
 class Activity: NSObject, MKAnnotation {
     
     // activity adopts to these two protocols for it to be displayable on the map
