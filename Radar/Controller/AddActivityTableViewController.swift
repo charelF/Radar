@@ -24,6 +24,8 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var dateSegment: UISegmentedControl!
     @IBOutlet weak var timeSegment: UISegmentedControl!
     
+    
+    
     var mapCoordinates: CLLocationCoordinate2D? = nil
     
     override func viewDidLoad() {
@@ -42,10 +44,43 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
 //        pickerData = [("sport",["bike", "run", "soccer"]),
 //        ("games",["videogame", "boardgame", "adventuregame"])]
         
-        
+        loadSegments(forDay: "today")
         
     }
-
+    
+    func loadSegments(forDay day: String) {
+        
+        let possibleTimes: [String]
+        
+        switch day {
+        case "today":
+            possibleTimes = ActivityHandler.getPossibleTimesOfDay()
+        default:
+            possibleTimes = ["morning", "noon", "afternoon", "evening", "night"]
+        }
+        
+        self.timeSegment.removeAllSegments()
+        
+        for i in 0..<possibleTimes.count {
+            self.timeSegment.insertSegment(withTitle: possibleTimes[i], at: i, animated: true)
+        }
+    }
+            
+    
+    // triggered when selecting day
+    @IBAction func timesForDay(_ sender: Any) {
+        
+        switch dateSegment.selectedSegmentIndex {
+        case 0: //today
+            loadSegments(forDay: "today")
+        default:
+            loadSegments(forDay: "tomorrow")
+        }
+        
+    }
+    
+    
+    
     // number of columns in Picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2

@@ -440,14 +440,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Describe your activity" id="HxD-Qf-LMb">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Tfd-M9-Tza">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Tfd-M9-Tza">
                                         <rect key="frame" x="0.0" y="317.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tfd-M9-Tza" id="PEJ-CI-6oJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title of your activity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozp-M2-EfY">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozp-M2-EfY">
                                                     <rect key="frame" x="66" y="4" width="308" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -463,34 +463,22 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="XdP-el-J72">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="190" id="XdP-el-J72">
                                         <rect key="frame" x="0.0" y="361" width="414" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XdP-el-J72" id="JQu-R2-dVN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eyN-rs-Ct1" customClass="UITextViewFixed" customModule="Radar" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="38" width="334" height="141"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eyN-rs-Ct1" customClass="UITextViewFixed" customModule="Radar" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="11" width="380" height="168"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dN-DZ-KlE">
-                                                    <rect key="frame" x="20" y="11" width="93" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="eyN-rs-Ct1" firstAttribute="top" secondItem="JQu-R2-dVN" secondAttribute="topMargin" id="6h6-L0-FwS"/>
-                                                <constraint firstItem="eyN-rs-Ct1" firstAttribute="bottom" secondItem="JQu-R2-dVN" secondAttribute="bottomMargin" id="IQH-Kt-BcG"/>
-                                                <constraint firstItem="eyN-rs-Ct1" firstAttribute="leading" secondItem="JQu-R2-dVN" secondAttribute="leadingMargin" id="fdb-fv-Jnv"/>
-                                                <constraint firstItem="eyN-rs-Ct1" firstAttribute="trailing" secondItem="JQu-R2-dVN" secondAttribute="trailingMargin" id="kon-MT-ELy"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -504,27 +492,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-F8-cn5">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-F8-cn5">
                                                     <rect key="frame" x="20" y="6" width="374" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Today"/>
                                                         <segment title="Tomorrow"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="timesForDay:" destination="2LR-te-v1e" eventType="valueChanged" id="onX-AB-XPW"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y6Q-F8-cn5" firstAttribute="top" secondItem="dbJ-Zq-Ijq" secondAttribute="topMargin" constant="-5" id="KVC-oT-8fd"/>
+                                                <constraint firstItem="Y6Q-F8-cn5" firstAttribute="centerY" secondItem="dbJ-Zq-Ijq" secondAttribute="centerY" id="KhP-0M-GlM"/>
+                                                <constraint firstItem="Y6Q-F8-cn5" firstAttribute="trailing" secondItem="dbJ-Zq-Ijq" secondAttribute="trailingMargin" id="eCT-sE-oKN"/>
+                                                <constraint firstItem="Y6Q-F8-cn5" firstAttribute="leading" secondItem="dbJ-Zq-Ijq" secondAttribute="leadingMargin" id="evX-HF-Sal"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bqa-gL-6bd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="bqa-gL-6bd">
                                         <rect key="frame" x="0.0" y="650.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bqa-gL-6bd" id="ZAc-0W-zhV">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xYE-4A-26S">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xYE-4A-26S">
                                                     <rect key="frame" x="20" y="7" width="374" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Morning"/>
                                                         <segment title="Noon"/>
@@ -534,6 +529,12 @@
                                                     </segments>
                                                 </segmentedControl>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xYE-4A-26S" firstAttribute="trailing" secondItem="ZAc-0W-zhV" secondAttribute="trailingMargin" id="7oJ-AD-Wrc"/>
+                                                <constraint firstItem="xYE-4A-26S" firstAttribute="centerY" secondItem="ZAc-0W-zhV" secondAttribute="centerY" id="QHd-EA-dvs"/>
+                                                <constraint firstItem="xYE-4A-26S" firstAttribute="top" secondItem="ZAc-0W-zhV" secondAttribute="topMargin" constant="-4" id="dt1-Wz-Pyp"/>
+                                                <constraint firstItem="xYE-4A-26S" firstAttribute="leading" secondItem="ZAc-0W-zhV" secondAttribute="leadingMargin" id="g9y-pY-6Sw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

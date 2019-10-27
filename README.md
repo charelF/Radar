@@ -54,6 +54,12 @@ left to do:
 - clean project, remove unecessary code and files.
 
 
+27/10/19
+left to do:
+- show users current location on map with button (see one of the downloaded apple example apps)
+- start with the activity view, and the "more" window that it will open
+
+
 
 
 

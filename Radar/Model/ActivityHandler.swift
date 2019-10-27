@@ -9,7 +9,18 @@
 import Foundation
 import CoreLocation
 
+
+
+
+
 class ActivityHandler {
+    
+    static let morning: ClosedRange = 0...10
+    static let noon: ClosedRange = 11...13
+    static let afternoon: ClosedRange = 14...17
+    static let evening: ClosedRange = 18...21
+    static let night: ClosedRange = 22...24
+    
     
     var activityList: [Activity]
     
@@ -37,6 +48,31 @@ class ActivityHandler {
 //            <#code#>
 //        }
 //    }
+    
+    static func getPossibleTimesOfDay() -> [String] {
+        let currentTime = Date()
+        
+        let hour = Calendar.current.component(.hour, from: currentTime)
+        
+        var possibleTimes: [String] = []
+        
+        switch hour {
+            case morning:
+                possibleTimes.append(contentsOf: ["morning", "noon", "afternoon", "evening", "night"])
+            case noon:
+                possibleTimes.append(contentsOf: ["noon", "afternoon", "evening", "night"])
+            case afternoon:
+                possibleTimes.append(contentsOf: ["afternoon", "evening", "night"])
+            case evening:
+                possibleTimes.append(contentsOf: ["evening", "night"])
+            case night:
+                possibleTimes.append("night")
+            default:
+                possibleTimes.append("error")
+        }
+        
+        return possibleTimes
+    }
     
     
     
