@@ -29,9 +29,10 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
     
     
     
-    var activities: [Activity] = ActivityModel.global.activityList
+    var activities: [Activity] = []
     
     override func viewDidLoad() {
+        print("view did load was called")
         super.viewDidLoad()
         
         // this VC becomes a mapview delegate
@@ -40,11 +41,23 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
         // also copied from mapkit tutorial
         mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        mapView.addAnnotations(activities)
+//        activities = ActivityHandler.instance.activityList
+//        mapView.addAnnotations(activities)
         
         print("viewDidLoad called")
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("view will appear")
+        
+        activities = ActivityHandler.instance.activityList
+        print(activities)
+        
+        mapView.addAnnotations(activities)
+        
+        super.viewWillAppear(animated)
     }
     
     // add long press gesture from object library and drag it from the the storyboard to here and tag it as action
@@ -86,17 +99,29 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
     
     
     
-    
+    func zoomAndCenter(on centerCoordinate: CLLocationCoordinate2D, zoom: Double) {
+        var span: MKCoordinateSpan = mapView.region.span
+        span.latitudeDelta *= zoom
+        span.longitudeDelta *= zoom
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: centerCoordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
     
     
     
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        
-//        let bundle = Bundle(for: self)
-//        let nib = UINib(nibName: String(describing:self), bundle: bundle)
-//        return nib.instantiate(withOwner: nil, options: nil).first as! MyView
+                
+        if view.annotation is MKClusterAnnotation {
+            
+            // zoom and center on marker
+            zoomAndCenter(on: (view.annotation?.coordinate)!, zoom: 0.25)
+            
+            // deselect marker as we are not interested in it and want to possibly continue zooming
+            mapView.deselectAnnotation(view.annotation, animated: false)
+            
+            return
+        }
         
             
         let activity = view.annotation as! Activity
@@ -141,6 +166,27 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+//    func mapView(_ mapView: MKMapView, clusterAnnotationForMemberAnnotations memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {
+//
+//        print("--- called")
+//
+//        var clusterAnnotation = MKClusterAnnotation(memberAnnotations: memberAnnotations)
+//
+//        return clusterAnnotation
+//    }
+
+    // crash when clicking on cluster --> https://forums.developer.apple.com/message/271061#271061
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        print("function mapview called")
+//        if annotation is MKClusterAnnotation {
+//            return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier, for: annotation)
+//        } else if annotation is Activity {
+//            return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
+//        } else {
+//            return nil
+//        }
+//    }
 }
 
 

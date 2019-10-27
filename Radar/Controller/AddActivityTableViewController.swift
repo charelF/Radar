@@ -6,6 +6,8 @@
 //  Copyright © 2019 Charel FELTEN. All rights reserved.
 //
 
+// picker view inspired by: https://stackoverflow.com/questions/45766436/swift-uipickerview-1st-component-changes-2nd-components-data?noredirect=1&lq=1
+
 import UIKit
 import CoreLocation
 
@@ -86,7 +88,7 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
             pickerView.reloadComponent(1)
             pickerView.selectRow(0, inComponent: 1, animated: true)
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
-            //print(pickerData[selectedRowInFirstComponent].1[0]) // last subscript is 0, because we reset comp 2 to first element
+            print(pickerData[selectedRowInFirstComponent].1[0]) // last subscript is 0, because we reset comp 2 to first element
             
             //pickerValue = pickerData[selectedRowInFirstComponent].1[0]
             pickerValue = (pickerData[selectedRowInFirstComponent].0, pickerData[selectedRowInFirstComponent].1[0])
@@ -159,13 +161,18 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         let domain = pickerValue.0 ?? "no domain"
         let type = pickerValue.1 ?? "no type"
         let coordinates = mapCoordinates ?? CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935)
-        ActivityModel.global.createActivity(name:  name, description: desc, domain: domain, type: type, time: time, date: date, coordinates: coordinates)
+        ActivityHandler.instance.createActivity(name:  name, description: desc, domain: domain, type: type, time: time, date: date, coordinates: coordinates)
         
         
         print("activity was created")
-        print(ActivityModel.global.activityList.count)
+        print(ActivityHandler.instance.activityList.count)
         
         // everything seems to work, just the map view controllers (and the others) are not updated
+        // how do we update it?
+        // 1) -> https://medium.com/livefront/why-isnt-viewwillappear-getting-called-d02417b00396
+        // no real solution found, other than set the modal style to .fullscreen in storyboard, which will
+        // call the viewWillAppear method of the mapviewcontroller
+        
         
         dismiss(animated: true, completion: nil)
     }

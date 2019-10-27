@@ -11,11 +11,12 @@ import MapKit
 
 class ActivityListViewController: UITableViewController {
     
-//    var activities: [Activity] = []
-    var activities: [Activity] = ActivityModel.global.activityList
+    var activities: [Activity] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //activities = ActivityHandler.instance.activityList
         
         
         
@@ -31,7 +32,15 @@ class ActivityListViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        activities = ActivityHandler.instance.activityList
+    }
+    
+    
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {

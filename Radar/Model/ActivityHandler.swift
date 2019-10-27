@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class ActivityModel {
+class ActivityHandler {
     
     var activityList: [Activity]
     
@@ -18,7 +18,7 @@ class ActivityModel {
     private init(){
         activityList = []
     }
-    static let global = ActivityModel()
+    static let instance = ActivityHandler()
     
 //    static func userChoiceToDate(date: String, time: String) -> Date {
 //        let currentTime = Date()

@@ -23,11 +23,14 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
 //            rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
 //            leftCalloutAccessoryView = UISwitch()
             // 2
-            markerTintColor = UIColor(red:1, green: 1, blue: 1, alpha: 1)
+            markerTintColor = UIColor.white
             glyphText = String(activity.emoji)
             
             titleVisibility = .hidden
             subtitleVisibility = .hidden
+            
+            clusteringIdentifier = "1"
+            //displayPriority = .required
 //
 //
 //            let detailLabel = UILabel()
@@ -60,6 +63,7 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
         }
     }
     
+    // the two functions below are used to detect whether we click an element inside the activity view or the map
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
         if (hitView != nil)

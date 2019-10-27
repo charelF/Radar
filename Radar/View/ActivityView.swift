@@ -8,6 +8,9 @@
 
 // this uiview is responsable to manage the ActivityView.xib file
 // tutorial from: https://medium.com/better-programming/swift-3-creating-a-custom-view-from-a-xib-ecdfe5b3a960
+// however this is wrong!
+// here is the correct way: https://medium.com/@ingun37/using-xib-in-storyboard-you-are-doing-it-wrong-how-to-use-xib-in-storyboard-ios-dd1b427a2247
+// summary: do as shown below, do not set this UIVIEW as the files owner of the XIB!
 
 import UIKit
 
@@ -50,18 +53,19 @@ class ActivityView: UIView {
         
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
-//
+
+        
 //        self.layer.shadowPath =
 //              UIBezierPath(roundedRect: self.bounds,
 //              cornerRadius: self.layer.cornerRadius).cgPath
 //        self.layer.shadowColor = UIColor.black.cgColor
-//        self.layer.shadowOpacity = 0.5
+//        self.layer.shadowOpacity = 0.25
 //        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        self.layer.shadowRadius = 1
+//        self.layer.shadowRadius = 2
 //        self.layer.masksToBounds = false
         
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 0.25
         
         //elf.layer.shadowOffset = CGSize(width: 10, height: 10)
         
