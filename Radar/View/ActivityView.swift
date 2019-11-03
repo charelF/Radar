@@ -20,19 +20,29 @@ class ActivityView: UIView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var emojiLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     static func loadViewFromNib() -> ActivityView {
-        print(#function)
         let bundle = Bundle(for: self)
         let nib = UINib(nibName: String(describing:self), bundle: bundle)
         return nib.instantiate(withOwner: nil, options: nil).first as! ActivityView
         
     }
     
+    override func awakeFromNib() {
+        // why? -> https://stackoverflow.com/a/28385946
+        super.awakeFromNib()
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
+        
+        
 
         
 //        self.layer.shadowPath =
@@ -47,9 +57,13 @@ class ActivityView: UIView {
         self.layer.borderColor = UIColor.gray.cgColor
         self.layer.borderWidth = 0.25
         
-        //elf.layer.shadowOffset = CGSize(width: 10, height: 10)
+        //self.layer.shadowOffset = CGSize(width: 10, height: 10)
         
         //self.layer.bounds = CGRect(x:0, y:0, width: 250, height: 500)
 //        commonInit()
     }
+    
+    
+    
+    
 }

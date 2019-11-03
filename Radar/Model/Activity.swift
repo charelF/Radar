@@ -37,7 +37,8 @@ class Activity: NSObject, MKAnnotation {
         ["sport":
             ["bike":"🚴",
              "mountainbike":"🚵",
-             "soccer":"⚽"],
+             "soccer":"⚽",
+             "run":"🏃"],
          "games":
             ["videogame":"🎮",
              "boardgame":"🎲"],
