@@ -10,6 +10,18 @@ import Foundation
 import CoreLocation
 
 
+enum partOfDay: String {
+    case morning = "Morning"
+    case noon = "Noon"
+    case afternoon = "afternoon"
+    case evening = "evening"
+    case night = "night"
+}
+
+
+
+
+
 
 
 
@@ -72,6 +84,43 @@ class ActivityHandler {
         }
         
         return possibleTimes
+    }
+    
+//    static dateIntervalToDescription(Da)
+    
+    static func getDescriptiveTime(from activityTime: Date) -> String {
+        
+        // get day
+        let datum = Calendar.current.component(.day, from: activityTime)
+        let today = Calendar.current.component(.day, from: Date())
+        let descriptiveDay: String
+        
+        if datum == today {
+            descriptiveDay = "This"
+        } else {
+            descriptiveDay = "Tomorrow"
+        }
+        
+        // get hour
+        let hour = Calendar.current.component(.hour, from: activityTime)
+        let descriptiveHour: String
+        
+        switch hour {
+            case morning:
+                descriptiveHour = "Morning"
+            case noon:
+                descriptiveHour = "Noon"
+            case afternoon:
+                descriptiveHour = "Afternoon"
+            case evening:
+                descriptiveHour = "Evening"
+            case night:
+                descriptiveHour = "Night"
+            default:
+                descriptiveHour = "Error"
+        }
+        
+        return descriptiveDay + " " + descriptiveHour
     }
     
     

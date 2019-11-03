@@ -132,7 +132,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
         print(activity.name)
         activityView.titleLabel.text = activity.name
         activityView.emojiLabel.text = activity.emoji
-        activityView.dateLabel.text = "this afternoon"
+        activityView.dateLabel.text = ActivityHandler.getDescriptiveTime(from: activity.activityTime)
         activityView.descriptionTextView.text = activity.desc
         
         // adding the view

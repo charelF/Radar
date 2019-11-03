@@ -31,6 +31,8 @@ class Activity: NSObject, MKAnnotation {
     
     let id: UUID
     
+    var comments: [(UUID, String, String)]
+    
     let emojiDictionary: [String:[String:String]] =
         ["sport":
             ["bike":"🚴",
@@ -69,6 +71,11 @@ class Activity: NSObject, MKAnnotation {
         self.activityTime = activityTime
         self.creationTime = Date()
         
+        self.comments = []
+        
+        
     }
+    
+    
     
 }
