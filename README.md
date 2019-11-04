@@ -61,5 +61,15 @@ left to do:
 
 
 
+---
+
+- how can i use ios13 systemColor when my project is currenlty for ios 13 and ios12, and ios 12 does not support them?
+-> switch completely to ios13 only?
+
+
+- how to debug whether a view takes long to appear because of some animation or because it is computationally heavy?
+
+
+
 
 

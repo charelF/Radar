@@ -17,7 +17,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ActivityMapViewController: UIViewController, MKMapViewDelegate {
+class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityViewDelegate {
 
     // add MKmapview and drag it also to here and tag it as an outlet
     @IBOutlet weak var mapView: MKMapView!
@@ -37,6 +37,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
         
         // this VC becomes a mapview delegate
         self.mapView.delegate = self
+        
+        
         
         // also copied from mapkit tutorial
         mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
@@ -128,6 +130,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
         let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
         let activityView = views?[0] as! ActivityView
         
+        activityView.delegate = self
+        
         // mapping activity properties to activity view ui elements
         print(activity.name)
         activityView.titleLabel.text = activity.name
@@ -187,6 +191,15 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate {
 //            return nil
 //        }
 //    }
+    
+    func test() {
+        print("the button was clicked")
+    }
+    
+    func action() {
+        print("delegate pattern working")
+        performSegue(withIdentifier: "showActivityFromList", sender: self)
+    }
 }
 
 

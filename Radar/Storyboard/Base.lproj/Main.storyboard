@@ -47,7 +47,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="69.565217391304358" y="-689.0625"/>
+            <point key="canvasLocation" x="77" y="-689"/>
         </scene>
         <!--MainScreen-->
         <scene sceneID="lcc-Xe-B8g">

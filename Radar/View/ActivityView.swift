@@ -22,6 +22,12 @@ class ActivityView: UIView {
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
+    var delegate: ActivityViewDelegate?
+    
+    func exp() {
+        print("experiment did not work")
+    }
+    
     static func loadViewFromNib() -> ActivityView {
         let bundle = Bundle(for: self)
         let nib = UINib(nibName: String(describing:self), bundle: bundle)
@@ -34,6 +40,7 @@ class ActivityView: UIView {
         super.awakeFromNib()
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
+        //button.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,6 +71,15 @@ class ActivityView: UIView {
     }
     
     
+    @IBAction func buttonPress(_ sender: Any) {
+        delegate?.action()
+    }
     
     
+}
+
+
+protocol ActivityViewDelegate {
+    // using delegate pattern -> https://stackoverflow.com/a/45936716/9439097
+    func action()
 }
