@@ -27,6 +27,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     
     var mapCoordinates: CLLocationCoordinate2D? = nil
     
+    var currentlySelectedActivity: Activity?
+    
     
     
     var activities: [Activity] = []
@@ -34,6 +36,9 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     override func viewDidLoad() {
         print("view did load was called")
         super.viewDidLoad()
+        
+//        print(self.navigationController)
+//        self.navigationController?.setToolbarHidden(true, animated: false)
         
         // this VC becomes a mapview delegate
         self.mapView.delegate = self
@@ -87,13 +92,21 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let navigationController = segue.destination as? UINavigationController {
-            if let receiver = navigationController.topViewController as? AddActivityTableViewController {
-            
-                if mapCoordinates == nil {
-                    print("problem")
-                } else {
-                    receiver.mapCoordinates = mapCoordinates
+        if segue.identifier == "addActivitySegue" {
+            if let navigationController = segue.destination as? UINavigationController {
+                if let receiver = navigationController.topViewController as? AddActivityTableViewController {
+                
+                    if mapCoordinates == nil {
+                        print("problem")
+                    } else {
+                        receiver.mapCoordinates = mapCoordinates
+                    }
+                }
+            }
+        } else if segue.identifier == "showActivityFromMap" {
+            if let receiver = segue.destination as? ActivityViewController {
+                if let activity = currentlySelectedActivity {
+                    receiver.activity = activity
                 }
             }
         }
@@ -141,6 +154,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         
         // adding the view
         view.addSubview(activityView)
+        
+        currentlySelectedActivity = activity
 
 //        let button = UIButton(frame: activityView.starbucksPhone.frame)
 //        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
@@ -166,6 +181,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
                 // solve the actual bug: why it was removed here, and not in the example
                 if subview is ActivityView {
                     subview.removeFromSuperview()
+                    currentlySelectedActivity = nil
                 }
             }
         }
@@ -192,14 +208,12 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
 //        }
 //    }
     
-    func test() {
-        print("the button was clicked")
-    }
-    
     func action() {
         print("delegate pattern working")
-        performSegue(withIdentifier: "showActivityFromList", sender: self)
+        performSegue(withIdentifier: "showActivityFromMap", sender: self)
     }
+    
+    
 }
 
 

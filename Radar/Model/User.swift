@@ -12,6 +12,8 @@ class User {
     
     let username: String
     let id: UUID
+    let activities: [Activity] = []
+    let languages: [String] = []
     
     init(username: String) {
         self.username = username

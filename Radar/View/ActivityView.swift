@@ -24,9 +24,6 @@ class ActivityView: UIView {
     
     var delegate: ActivityViewDelegate?
     
-    func exp() {
-        print("experiment did not work")
-    }
     
     static func loadViewFromNib() -> ActivityView {
         let bundle = Bundle(for: self)

@@ -30,6 +30,8 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var activityViewContainer: UIView!
     @IBOutlet weak var commentTableView: UITableView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +39,6 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             activity?.comments.append((UUID(), "user \(i)", "this is a test comment"))
         }
         
-        print(activity?.comments)
         
         let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
         let activityView = views?[0] as! ActivityView

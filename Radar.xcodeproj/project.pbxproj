@@ -17,6 +17,8 @@
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
 		3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */; };
 		3C380AEF236B535200947E97 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AEE236B535200947E97 /* ActivityViewController.swift */; };
+		3C380AF12370B22F00947E97 /* ActivityDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */; };
+		3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */; };
 		3C402736235DFD7800306916 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C402735235DFD7800306916 /* User.swift */; };
 		3C5BE199235D9C71005C8862 /* ActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE198235D9C71005C8862 /* ActivityHandler.swift */; };
 		3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */; };
@@ -39,6 +41,8 @@
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
 		3C380AEE236B535200947E97 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Radar/Controller/ActivityViewController.swift; sourceTree = SOURCE_ROOT; };
+		3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityDetailTableViewController.swift; path = Radar/Controller/ActivityDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3C402735235DFD7800306916 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3C5BE198235D9C71005C8862 /* ActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHandler.swift; sourceTree = "<group>"; };
 		3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				3C1C32232341F634000C6B0E /* ActivityListViewController.swift */,
 				3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */,
 				3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */,
+				3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			children = (
 				3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */,
 				3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */,
+				3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */,
 				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
 				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
 				3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */,
@@ -208,8 +214,10 @@
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
+				3C380AF12370B22F00947E97 /* ActivityDetailTableViewController.swift in Sources */,
 				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
 				3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */,
+				3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
 				3C380AEF236B535200947E97 /* ActivityViewController.swift in Sources */,
 				3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */,
