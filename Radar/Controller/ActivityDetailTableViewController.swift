@@ -9,9 +9,15 @@
 import UIKit
 
 class ActivityDetailTableViewController: UITableViewController {
-
+    
+    let activity: Activity? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         //self.tableView.register(ActivityDetailTableViewCell.self, forCellReuseIdentifier: "activity")
 
@@ -22,6 +28,8 @@ class ActivityDetailTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,42 +41,48 @@ class ActivityDetailTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0: return 1
-        case 1: return 2
-        case 2: return 10
+        case 1: return 1
+        case 2: return activity?.comments.count ?? 0
         default: return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 400
+        switch indexPath.section {
+        case 0: return 400
+        case 1: return 55.5
+        default: return tableView.rowHeight
         }
-        return tableView.rowHeight
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell
         
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "activity", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "activity", for: indexPath)
             let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
             let activityView = views?[0] as! ActivityView
             cell.addSubview(activityView)
             activityView.center = cell.convert(cell.center, from: cell.superview)
+            return cell
             
-        case 1: cell = tableView.dequeueReusableCell(withIdentifier: "participate", for: indexPath)
-        case 2: cell = tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath)
-        default: cell = tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath)
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "participate", for: indexPath) as! ParticipateActivityTableViewCell
+            cell.participatingTitle.text = "Participate in this activity"
+            cell.participatingSubtitle.text = "currently 11 people are interested"
+            return cell
+        case 2:
+            return tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath)
+        default:
+            return tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath)
         }
         
         
 
         // Configure the cell...
 
-        return cell
     }
     
 
