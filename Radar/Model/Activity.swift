@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 
+class ActivityAnnotation
+
 // activity has to be a class because of the limitations and inheritance, but maybe one way of doing it is to create a new class called ActivityAnnotation that
 // contains an Activity? not sure...
 class Activity: NSObject, MKAnnotation {
@@ -33,18 +35,7 @@ class Activity: NSObject, MKAnnotation {
     
     var comments: [(UUID, String, String)]
     
-    let emojiDictionary: [String:[String:String]] =
-        ["sport":
-            ["bike":"🚴",
-             "mountainbike":"🚵",
-             "soccer":"⚽",
-             "run":"🏃"],
-         "games":
-            ["videogame":"🎮",
-             "boardgame":"🎲"],
-         "social":
-            ["drinks":"🍺"]
-        ]
+    
     
     
     
@@ -80,3 +71,49 @@ class Activity: NSObject, MKAnnotation {
     
     
 }
+
+
+//struct Category {
+//    let name: EnumCategory
+//    let subccategories: [Subcategory]
+//}
+//
+//struct Subcategory {
+//    let name: EnumSubcategory
+//    let emoji: Character
+//}
+
+enum Category: String {
+    case sport = "Sport"
+    case game = "Game"
+}
+
+enum Subcategory: String {
+    case soccer = "Soccer"
+    case basketball = "Basketball"
+    case tennis = "Tennis"
+    
+    case videogame = "Videogame"
+    case boardgame = "Boardgame"
+    
+}
+
+
+struct AllCategories {
+    let subcategories: [Category:[Subcategory:Character]] = [
+        .sport:[
+            .soccer:"⚽️",
+            .basketball:"🏀",
+            .tennis:"🥎"
+        ],
+        .game:[
+            .videogame: "🎮",
+            .boardgame: "🎲"
+        ]
+    ]
+    
+    
+}
+
+
+
