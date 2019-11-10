@@ -14,8 +14,10 @@ import CoreLocation
 class AddActivityTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var typePicker: UIPickerView!
-    var pickerData: [(String,[String])] = []
-    var pickerValue: (String?,String?) = (nil,nil)
+//    var pickerData: [(String,[String])] = []
+    var pickerData: [(Category,[Subcategory])] = []
+//    var pickerValue: (String?,String?) = (nil,nil)
+    var pickerValue: (Category?,Subcategory?) = (nil,nil)
     
     
     @IBOutlet weak var titleField: UITextField!
@@ -34,8 +36,10 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         self.typePicker.delegate = self
         self.typePicker.dataSource = self
 
-        pickerData = [("sport",["bike", "run", "soccer", "basketball"]),
-                      ("games",["videogame", "boardgame", "adventuregame"])]
+//        pickerData = [("sport",["bike", "run", "soccer", "basketball"]),
+//                      ("games",["videogame", "boardgame", "adventuregame"])]
+        
+        pickerData = Subcategory.getRelations()
 
         // not sure if necessary
         typePicker.reloadAllComponents()
@@ -44,25 +48,25 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
 //        pickerData = [("sport",["bike", "run", "soccer"]),
 //        ("games",["videogame", "boardgame", "adventuregame"])]
         
-        loadSegments(forDay: "today")
+        loadSegments(forDay: .today)
         
     }
     
-    func loadSegments(forDay day: String) {
+    func loadSegments(forDay day: PartOfWeek) {
         
-        let possibleTimes: [String]
+        let possibleTimes: [PartOfDay]
         
         switch day {
-        case "today":
-            possibleTimes = ActivityHandler.getPossibleTimesOfDay()
+        case .today:
+            possibleTimes = Time.getPossibleTimesOfDay()
         default:
-            possibleTimes = ["morning", "noon", "afternoon", "evening", "night"]
+            possibleTimes = PartOfDay.allCases
         }
         
         self.timeSegment.removeAllSegments()
         
         for i in 0..<possibleTimes.count {
-            self.timeSegment.insertSegment(withTitle: possibleTimes[i], at: i, animated: true)
+            self.timeSegment.insertSegment(withTitle: possibleTimes[i].rawValue, at: i, animated: true)
         }
     }
             
@@ -72,9 +76,9 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         
         switch dateSegment.selectedSegmentIndex {
         case 0: //today
-            loadSegments(forDay: "today")
+            loadSegments(forDay: .today)
         default:
-            loadSegments(forDay: "tomorrow")
+            loadSegments(forDay: .tomorrow)
         }
         
     }
@@ -96,6 +100,8 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         } else {
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
             return pickerData[selectedRowInFirstComponent].1.count
+            
+            // research if dics are ordered or not
         }
     }
 
@@ -107,12 +113,12 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
             pickerView.selectRow(0, inComponent: 1, animated: true)
 
             // return the first value of the tuple (so the category name) at index row
-            return pickerData[row].0
+            return pickerData[row].0.rawValue
         } else {
             // component is 1, so we look which row is selected in the first component
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
 
-            return pickerData[selectedRowInFirstComponent].1[row]
+            return pickerData[selectedRowInFirstComponent].1[row].rawValue
         }
         //return pickerData[component].1[row]
     }
@@ -168,39 +174,36 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         
     @IBAction func save(_ sender: Any) {
         
-        var date: String {
+        var partOfWeek: PartOfWeek {
             switch dateSegment.selectedSegmentIndex {
-                case 0: return "Today"
-                case 1: return "Tomorrow"
-                default: return "Today"
+            case 0: return .today
+            case 1: return .tomorrow
+            default: return .today
             }
         }
         
-        var time: String {
+        var partOfDay: PartOfDay {
             switch dateSegment.selectedSegmentIndex {
-                case 0: return "Morning"
-                case 1: return "Noon"
-                case 2: return "Afternoon"
-                case 3: return "Evening"
-                case 4: return "Night"
-                default: return "Morning"
+            case 0: return .morning
+            case 1: return .noon
+            case 2: return .afternoon
+            case 3: return .evening
+            case 4: return .night
+            default: return .morning
             }
         }
         
-        //print(date, time, pickerValue, titleField.text, descriptionField.text, mapCoordinates)
-        
-        // at this point, tell the user if some values are missing
-        
-        let name = titleField.text ?? "no name"
-        let desc = descriptionField.text ?? "no description"
-        let domain = pickerValue.0 ?? "no domain"
-        let type = pickerValue.1 ?? "no type"
-        let coordinates = mapCoordinates ?? CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935)
-        ActivityHandler.instance.createActivity(name:  name, description: desc, domain: domain, type: type, time: time, date: date, coordinates: coordinates)
+        // TODO: validate these inputs, if they are nil, prompt user with warning
+        let name = titleField.text ?? "NONAME"
+        let desc = descriptionField.text ?? "NODESCRIPTION"
+        let subcategory = pickerValue.1 ?? .tennis
+        let coordinates = mapCoordinates!
         
         
-        print("activity was created")
-        print(ActivityHandler.instance.activityList.count)
+        let activity = Activity(name: name, desc: desc, subcategory: subcategory, coordinate: coordinates,
+                                activityTime: Time.timeTupleToDate(partOfWeek: partOfWeek, partOfDay: partOfDay))
+        User.user.createdActivities.append(activity)
+        
         
         // everything seems to work, just the map view controllers (and the others) are not updated
         // how do we update it?

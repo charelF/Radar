@@ -12,7 +12,7 @@ import CoreLocation
 // enum tips: https://developerinsider.co/advanced-enum-enumerations-by-example-swift-programming-language/
 
 
-enum PartOfDay: String {
+enum PartOfDay: String, CaseIterable {
     case morning = "Morning"
     case noon = "Noon"
     case afternoon = "Afternoon"
@@ -20,7 +20,7 @@ enum PartOfDay: String {
     case night = "Night"
 }
 
-enum PartOfWeek: String {
+enum PartOfWeek: String, CaseIterable {
     case today = "Today"
     case tomorrow = "Tomorrow"
 }
@@ -81,6 +81,12 @@ class Time {
             case (.today, _): return "This \(partOfDay.rawValue)"
             default: return "\(partOfWeek.rawValue) \(partOfDay.rawValue)"
         }
+    }
+    
+    
+    static func stringFromDate(from date: Date) -> String {
+        let tuple = dateToTimeTuple(date: date)
+        return stringFromTimeTuple(partOfWeek: tuple.0, partOfDay: tuple.1)
     }
        
     

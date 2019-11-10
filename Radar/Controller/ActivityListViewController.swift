@@ -17,7 +17,8 @@ class ActivityListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        activities = ActivityHandler.instance.activityList
+        activities = User.user.createdActivities // afterwards we will have to change this code:
+        // the activities that are shown are retrieved from the server
     }
     
     

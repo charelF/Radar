@@ -15,12 +15,21 @@ class ActivityWrapper: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
     
-    init(activity: Activity) {
+    init(_ activity: Activity) {
         self.activity = activity
         self.title = activity.name
         self.coordinate = activity.coordinate
         self.subtitle = activity.desc
     }
+    
+    static func wrap(for activities: [Activity]) -> [ActivityWrapper] {
+        var activityWrapper: [ActivityWrapper] = []
+        for activity in activities {
+            activityWrapper.append(ActivityWrapper(activity))
+        }
+        return activityWrapper
+    }
+            
 }
 
 
@@ -49,8 +58,8 @@ struct Activity: Identifiable, Codable {
     let id: UUID = UUID()
     
     var comments: [Comment] = []
-    var participants: [User] = []
-    //let creator: User
+    var participants: [String] = [] // contains the IDs of participants
+    let creatorID: String
     
     init(name: String, desc: String, subcategory: Subcategory,
          coordinate: CLLocationCoordinate2D, activityTime: Date) {
@@ -64,8 +73,20 @@ struct Activity: Identifiable, Codable {
         self.customCoordinate = Coordinate(coordinate)
         
         self.activityTime = activityTime
+        
+        self.creatorID = User.user.id
     }
 }
+
+// activity can now be encoded and decoded like this:
+// activity -> JSON
+//let jsonData = try! JSONEncoder().encode(testData[1])
+//let jsonString = String(data: jsonData, encoding: .utf8)!
+//
+// JSON -> activity
+//let jsonDataBack = jsonString.data(using: .utf8)!
+//let activity = try! JSONDecoder().decode(Activity.self, from: jsonDataBack)
+
 
 struct Coordinate: Codable, Hashable {
     // custom coordinate class to make it codable:
@@ -85,31 +106,31 @@ extension CLLocationCoordinate2D {
 }
 
 
-
-
-
 struct Comment: Codable {
-    let user: User
+    let userID: String
     let content: String
     let id: String = UUID().uuidString
 }
 
 class User: Codable {
-    //let username: String
+    let username: String = "charel" // temporary, will later be requested from user upon first opening of app
     let id: String = UUID().uuidString
     
     private init(){}
     static let user = User()
+    
+    var createdActivities: [Activity] = []
+    var joinedActivities: [Activity] = []
 }
 
 
-enum Category: String, Codable {
+enum Category: String, Codable, CaseIterable {
     case sport = "Sport"
     case game = "Game"
 }
 
 
-enum Subcategory: String, Codable {
+enum Subcategory: String, Codable, CaseIterable {
     case soccer = "Soccer"
     case basketball = "Basketball"
     case tennis = "Tennis"
@@ -136,11 +157,28 @@ enum Subcategory: String, Codable {
         case .boardgame: return "🎲"
         }
     }
+    
+    static func getRelations() -> [(Category,[Subcategory])] {
+        // we have to use list of tuples instead of dicionary because they are ordered, and the pickerView
+        // which uses this structure only returns the index of the selected value...
+        var dict: [Category:[Subcategory]] = [:]
+        var tuples: [(Category,[Subcategory])] = []
+        for subcategory in self.allCases {
+            dict[subcategory.category] = []
+        }
+        for subcategory in self.allCases {
+            dict[subcategory.category]!.append(subcategory)
+        }
+        for (key, value) in dict {
+            tuples.append((key, value))
+        }
+        print("inside func", dict, tuples)
+        return tuples
+    }
 }
 
 
-
-
+// testData
 
 let testData: [Activity] = [
     Activity(name: "dungeons and dragons",
@@ -157,3 +195,6 @@ let testData: [Activity] = [
              activityTime: Date()
     )
 ]
+
+
+

@@ -20,8 +20,8 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = commentTableView.dequeueReusableCell(withIdentifier: "activityViewCell", for: indexPath)
         
-        cell.textLabel?.text = activity?.comments[indexPath.row].1
-        cell.detailTextLabel?.text = activity?.comments[indexPath.row].2
+        cell.textLabel?.text = "comment"
+        cell.detailTextLabel?.text = "comment"
         
         return cell
     }
@@ -35,17 +35,13 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 1...10 {
-            activity?.comments.append((UUID(), "user \(i)", "this is a test comment"))
-        }
-        
         
         let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
         let activityView = views?[0] as! ActivityView
         
         activityView.titleLabel.text = activity?.name
         activityView.emojiLabel.text = activity?.emoji
-        activityView.dateLabel.text = ActivityHandler.getDescriptiveTime(from: activity?.activityTime ?? Date())
+        activityView.dateLabel.text = Time.stringFromDate(from: activity?.activityTime ?? Date())
         activityView.descriptionTextView.text = activity?.desc
         
         // adding the view

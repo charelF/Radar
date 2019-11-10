@@ -44,7 +44,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         self.mapView.delegate = self
         
         
-        
         // also copied from mapkit tutorial
         mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
@@ -59,10 +58,15 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     override func viewWillAppear(_ animated: Bool) {
         print("view will appear")
         
-        activities = ActivityHandler.instance.activityList
-        print(activities)
+        activities = User.user.createdActivities
+//        print(activities)
+        print(ActivityWrapper.wrap(for: activities))
         
-        mapView.addAnnotations(activities)
+        // TODO: problem: annotations are not removed, but viewWillAppear is called everytime and will add already existing activity annotations
+        // to the map.. the best way to solve this is to not reload activities in viewWillAppear, but onyl load a single activity after it has been added
+        // however at this point i dont know how I would implement this, so this workaround will do for now.
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(ActivityWrapper.wrap(for: activities))
         
         super.viewWillAppear(animated)
     }
@@ -139,7 +143,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         }
         
             
-        let activity = view.annotation as! Activity
+        let activityWrapper = view.annotation as! ActivityWrapper
+        let activity = activityWrapper.activity
         let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
         let activityView = views?[0] as! ActivityView
         
@@ -149,7 +154,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         print(activity.name)
         activityView.titleLabel.text = activity.name
         activityView.emojiLabel.text = activity.emoji
-        activityView.dateLabel.text = ActivityHandler.getDescriptiveTime(from: activity.activityTime)
+        activityView.dateLabel.text = Time.stringFromDate(from: activity.activityTime)
         activityView.descriptionTextView.text = activity.desc
         
         // adding the view

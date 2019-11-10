@@ -16,7 +16,8 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
             // 1
-            guard let activity = newValue as? Activity else { return }
+            guard let activityWrapper = newValue as? ActivityWrapper else { return }
+            let activity = activityWrapper.activity
 
             canShowCallout = false
 //            calloutOffset = CGPoint(x: -5, y: 5)
