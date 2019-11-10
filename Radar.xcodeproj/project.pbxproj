@@ -20,7 +20,7 @@
 		3C380AF12370B22F00947E97 /* ActivityDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */; };
 		3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */; };
 		3C380AF5237354CE00947E97 /* ParticipateActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */; };
-		3C5BE199235D9C71005C8862 /* ActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE198235D9C71005C8862 /* ActivityHandler.swift */; };
+		3C5BE199235D9C71005C8862 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE198235D9C71005C8862 /* Time.swift */; };
 		3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
 		3CEA5A64234D1D2800B25189 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA5A63234D1D2800B25189 /* ActivityView.xib */; };
@@ -44,7 +44,7 @@
 		3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityDetailTableViewController.swift; path = Radar/Controller/ActivityDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateActivityTableViewCell.swift; sourceTree = "<group>"; };
-		3C5BE198235D9C71005C8862 /* ActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHandler.swift; sourceTree = "<group>"; };
+		3C5BE198235D9C71005C8862 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewController.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
 		3CEA5A63234D1D2800B25189 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		3C5BE19C235D9F4E005C8862 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3C5BE198235D9C71005C8862 /* ActivityHandler.swift */,
+				3C5BE198235D9C71005C8862 /* Time.swift */,
 				3C1C321F2341E669000C6B0E /* Activity.swift */,
 			);
 			path = Model;
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C5BE199235D9C71005C8862 /* ActivityHandler.swift in Sources */,
+				3C5BE199235D9C71005C8862 /* Time.swift in Sources */,
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
