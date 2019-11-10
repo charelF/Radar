@@ -20,7 +20,6 @@
 		3C380AF12370B22F00947E97 /* ActivityDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */; };
 		3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */; };
 		3C380AF5237354CE00947E97 /* ParticipateActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */; };
-		3C402736235DFD7800306916 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C402735235DFD7800306916 /* User.swift */; };
 		3C5BE199235D9C71005C8862 /* ActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE198235D9C71005C8862 /* ActivityHandler.swift */; };
 		3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
@@ -45,7 +44,6 @@
 		3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityDetailTableViewController.swift; path = Radar/Controller/ActivityDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateActivityTableViewCell.swift; sourceTree = "<group>"; };
-		3C402735235DFD7800306916 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3C5BE198235D9C71005C8862 /* ActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHandler.swift; sourceTree = "<group>"; };
 		3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewController.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			children = (
 				3C5BE198235D9C71005C8862 /* ActivityHandler.swift */,
 				3C1C321F2341E669000C6B0E /* Activity.swift */,
-				3C402735235DFD7800306916 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,7 +221,6 @@
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
 				3C380AEF236B535200947E97 /* ActivityViewController.swift in Sources */,
 				3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */,
-				3C402736235DFD7800306916 /* User.swift in Sources */,
 				3C380AF5237354CE00947E97 /* ParticipateActivityTableViewCell.swift in Sources */,
 				3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */,
 				3C1C320E234090C5000C6B0E /* AppDelegate.swift in Sources */,
