@@ -36,18 +36,12 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         self.typePicker.delegate = self
         self.typePicker.dataSource = self
 
-//        pickerData = [("sport",["bike", "run", "soccer", "basketball"]),
-//                      ("games",["videogame", "boardgame", "adventuregame"])]
-        
         pickerData = Subcategory.getRelations()
 
         // not sure if necessary
         typePicker.reloadAllComponents()
         typePicker.selectRow(0, inComponent: 0, animated: false)
 
-//        pickerData = [("sport",["bike", "run", "soccer"]),
-//        ("games",["videogame", "boardgame", "adventuregame"])]
-        
         loadSegments(forDay: .today)
         
     }
@@ -83,6 +77,12 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         
     }
     
+//    @IBAction func debugSegmentedIndex(_ sender: Any) {
+//        
+//        print("number of segments", timeSegment.numberOfSegments)
+//        print("selected segment", timeSegment.selectedSegmentIndex)
+//        print("title", timeSegment.titleForSegment(at: timeSegment.selectedSegmentIndex))
+//    }
     
     
     // number of columns in Picker
@@ -182,13 +182,17 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
             }
         }
         
+        print(dateSegment.numberOfSegments)
+        print(dateSegment.selectedSegmentIndex)
+        //print(dateSegment.numberOfSegments - dateSegment.selectedSegmentIndex)
+        
         var partOfDay: PartOfDay {
-            switch dateSegment.selectedSegmentIndex {
-            case 0: return .morning
-            case 1: return .noon
-            case 2: return .afternoon
-            case 3: return .evening
-            case 4: return .night
+            switch (timeSegment.numberOfSegments - timeSegment.selectedSegmentIndex) {
+            case 5: return .morning
+            case 4: return .noon
+            case 3: return .afternoon
+            case 2: return .evening
+            case 1: return .night
             default: return .morning
             }
         }
