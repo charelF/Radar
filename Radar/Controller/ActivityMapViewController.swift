@@ -17,6 +17,8 @@ import UIKit
 import CoreLocation
 import MapKit
 
+import PromiseKit
+
 class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityViewDelegate {
 
     // add MKmapview and drag it also to here and tag it as an outlet
@@ -58,7 +60,21 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     override func viewWillAppear(_ animated: Bool) {
         print("view will appear")
         
-        activities = User.user.createdActivities
+        //activities = User.user.createdActivities
+        
+        // everytime the view will appear we make a network request and we will wait on the main thread...
+        // it is not very scalable as of right now..
+        firstly {
+            DataBase.getActivities()
+        }.done { activities in
+            // we could wrap al this in a DispatchQueue.main.async{} block or in the done block like this
+            // .done(on: DispatchQueue.main) { ... -> but this is not needed as everything is executed on the main thread
+            // anyway. However that is not ideal, as it slows down our app response time
+            self.activities = activities
+        }.catch { error in
+            print(error)
+        }
+        
 //        print(activities)
         print(ActivityWrapper.wrap(for: activities))
         

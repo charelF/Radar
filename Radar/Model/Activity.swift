@@ -178,6 +178,14 @@ enum Subcategory: String, Codable, CaseIterable {
 }
 
 
+enum UserContext {
+    case created
+    case participates
+    case participated
+    case nearby
+}
+
+
 // testData
 
 let testData: [Activity] = [
