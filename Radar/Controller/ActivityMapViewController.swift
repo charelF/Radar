@@ -31,8 +31,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     var currentlySelectedActivity: Activity?
     
     override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     var activities: [Activity] = []
@@ -48,17 +48,21 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        DataBase.data.getActivities()
-        activities = DataBase.data.activities
-        
+    func loadAnnotations() {
         // TODO: on one side, we will want to reload new activities, but on the other if we dont remove the exisiting annotations we get
         // duplicates. But this solution is not efficieint, as we will unecessarly remove and add annotations
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(ActivityWrapper.wrap(for: activities))
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        DataBase.data.getActivities(completion: {
+            self.activities = DataBase.data.activities
+            self.loadAnnotations()
+        })
         
         super.viewWillAppear(animated)
     }

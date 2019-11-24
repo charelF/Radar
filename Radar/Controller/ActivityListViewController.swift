@@ -30,7 +30,7 @@ class ActivityListViewController: UITableViewController {
     
     @objc func refresh(sender: AnyObject) {
         print("refresh called")
-        DataBase.data.getActivities()
+        //DataBase.data.getActivities()
         activities = DataBase.data.activities
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()

@@ -69,12 +69,13 @@ class DataBase {
         }
     }
     
-    func getActivities() {
+    func getActivities(completion: @escaping () -> Void) {
         firstly {
             self.getActivitiesPromise()
         }.done { activities in
             print("just retrieved \(activities.count) activities from the server")
             self.activities = activities
+            completion()
         }.catch { error in
             print(error)
         }
@@ -99,7 +100,7 @@ class DataBase {
             }
             print("succesfully added activity")
             // we will reload our activites from the server
-            self.getActivities()
+            //self.getActivities()
         }
     }
 
