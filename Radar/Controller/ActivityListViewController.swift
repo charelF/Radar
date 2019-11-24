@@ -14,11 +14,27 @@ class ActivityListViewController: UITableViewController {
     var activities: [Activity] = []
     var currentRow: Int = 0
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        activities = User.user.createdActivities // afterwards we will have to change this code:
+        activities = DataBase.data.activities // afterwards we will have to change this code:
         // the activities that are shown are retrieved from the server
+    }
+    
+    override func viewDidLoad() {
+        
+        // for this to work, we need to set refreshing property in the Uitableviewcontroller in the storyboard to enabled
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        
+    }
+    
+    @objc func refresh(sender: AnyObject) {
+        print("refresh called")
+        DataBase.data.getActivities()
+        activities = DataBase.data.activities
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+        print("refresh finished")
     }
     
     
@@ -52,7 +68,7 @@ class ActivityListViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      
-        if let receiver = segue.destination as? ActivityViewController {
+        if let receiver = segue.destination as? ActivityDetailViewController {
             let activity = activities[currentRow]
             receiver.activity = activity
         }

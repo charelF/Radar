@@ -24,6 +24,7 @@
 		3C380B2623800A3600947E97 /* KituraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C380B2523800A3600947E97 /* KituraKit */; };
 		3C380B2923800A8C00947E97 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C380B2823800A8C00947E97 /* PromiseKit */; };
 		3C380B2B238015BF00947E97 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380B2A238015BF00947E97 /* SettingsTableViewController.swift */; };
+		3C380B2D23893CE400947E97 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */; };
 		3C5BE199235D9C71005C8862 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE198235D9C71005C8862 /* Time.swift */; };
 		3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
@@ -50,6 +51,7 @@
 		3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateActivityTableViewCell.swift; sourceTree = "<group>"; };
 		3C380B222380087200947E97 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		3C380B2A238015BF00947E97 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		3C5BE198235D9C71005C8862 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewController.swift; sourceTree = "<group>"; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */,
 				3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */,
 				3C380B2A238015BF00947E97 /* SettingsTableViewController.swift */,
+				3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C5BE199235D9C71005C8862 /* Time.swift in Sources */,
+				3C380B2D23893CE400947E97 /* ActivityDetailViewController.swift in Sources */,
 				3C380B232380087200947E97 /* DataBase.swift in Sources */,
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */,

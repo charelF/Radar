@@ -14,18 +14,8 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func testServerConnection(_ sender: Any) {
         
-        // do we need the below block inside every ViewController etc that interacts with data from our server?
-        firstly {
-            DataBase.getActivities()
-        }.done { activities in
-            // we could wrap al this in a DispatchQueue.main.async{} block or in the done block like this
-            // .done(on: DispatchQueue.main) { ... -> but this is not needed as everything is executed on the main thread
-            // anyway. However that is not ideal, as it slows down our app response time
-            self.resultLabel.text = "\(activities.count)"
-        }.catch { error in
-            print(error)
-        }
-        //dispatchMain() // executes block of code submitted to main queue
+        
+        
         
         
     }

@@ -39,25 +39,14 @@ enum CustomRequestError: Error {
 
 class DataBase {
     
-//    final let client = KituraKit(baseURL:"localhost:8080")
+    var activities: [Activity] = []
+    let client: KituraKit
     
-    static func getActivitiesTest() throws {
-        if let client = KituraKit(baseURL:"localhost:8080") {
-            client.get("/activities") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
-                guard let activities = activitiyResponse else {
-                    //throw CustomRequestError.responseError
-                    print("error")
-                    return
-                }
-                print("fetched songs:")
-                activities.forEach() { print($0) }
-            }
-        } else {
-            throw CustomRequestError.urlError
-        }
+    private init(){
+        client = KituraKit(baseURL:"localhost:8080")!
     }
     
-    
+    static let data = DataBase()
     
     static func getActivities(near: CLLocationCoordinate2D, radius: Int = 10) {
         
@@ -67,28 +56,51 @@ class DataBase {
         
     }
     
-    static func getActivities() -> Promise<[Activity]> {
+    func getActivitiesPromise() -> Promise<[Activity]> {
         // returns all activities on server, used for testing
         return Promise { seal in
-//            guard let client = KituraKit(baseURL:"localhost:8080") else {
-//                return seal.reject(CustomRequestError.urlError)
-//            }
-            let client = KituraKit(baseURL:"localhost:8080")! // force unwrap not ideal, redo
-            
-            client.get("/activities") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
+            self.client.get("/activities") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
+                // either activities or error is nil, the other has a value
                 guard let activities = activitiyResponse else {
-                    // we know aR is nil thus we have an error
-                    return seal.reject(error!) // we reject the seal with our error
+                    return seal.reject(error!)
                 }
-                // we know aR is not nil and we have no error
-                // we can not return immediately as we dont know when the promise is fullfilled
                 seal.fulfill(activities)
             }
         }
     }
-
-    static func postActivity(activity: Activity) {
+    
+    func getActivities() {
+        firstly {
+            self.getActivitiesPromise()
+        }.done { activities in
+            print("just retrieved \(activities.count) activities from the server")
+            self.activities = activities
+        }.catch { error in
+            print(error)
+        }
+//        print("get activities called")
+//        self.client.get("/activities") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
+//            // either activities or error is nil, the other has a value
+//            guard let activities = activitiyResponse else {
+//                return
+//            }
+//            print("activities added")
+//            self.activities = activities
+//        }
         
+    }
+    
+    func addActivity(_ activity: Activity) {
+        self.client.put("/activities", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
+            print(activityResponse, error)
+            guard let _ = activityResponse else {
+                print("Error while adding activity: \(error)")
+                return
+            }
+            print("succesfully added activity")
+            // we will reload our activites from the server
+            self.getActivities()
+        }
     }
 
 }

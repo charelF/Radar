@@ -206,7 +206,8 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         
         let activity = Activity(name: name, desc: desc, subcategory: subcategory, coordinate: coordinates,
                                 activityTime: Time.timeTupleToDate(partOfWeek: partOfWeek, partOfDay: partOfDay))
-        User.user.createdActivities.append(activity)
+        
+        DataBase.data.addActivity(activity)
         
         
         // everything seems to work, just the map view controllers (and the others) are not updated

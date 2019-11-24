@@ -33,7 +33,7 @@ class ActivityWrapper: NSObject, MKAnnotation {
 }
 
 
-struct Activity: Identifiable, Codable {
+struct Activity: Identifiable, Codable, Equatable {
     
     let name: String
     let desc: String
@@ -55,7 +55,7 @@ struct Activity: Identifiable, Codable {
     let creationTime: Date = Date()
     let activityTime: Date
     
-    let id: UUID = UUID()
+    let id: String = UUID().uuidString
     
     var comments: [Comment] = []
     var participants: [String] = [] // contains the IDs of participants
@@ -75,6 +75,10 @@ struct Activity: Identifiable, Codable {
         self.activityTime = activityTime
         
         self.creatorID = User.user.id
+    }
+    
+    static func == (lhs: Activity, rhs: Activity) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

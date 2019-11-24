@@ -16,7 +16,6 @@
 import UIKit
 import CoreLocation
 import MapKit
-
 import PromiseKit
 
 class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityViewDelegate {
@@ -31,7 +30,10 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     
     var currentlySelectedActivity: Activity?
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     var activities: [Activity] = []
     
@@ -39,79 +41,43 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         print("view did load was called")
         super.viewDidLoad()
         
-//        print(self.navigationController)
-//        self.navigationController?.setToolbarHidden(true, animated: false)
-        
         // this VC becomes a mapview delegate
         self.mapView.delegate = self
         
-        
         // also copied from mapkit tutorial
         mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
-//        activities = ActivityHandler.instance.activityList
-//        mapView.addAnnotations(activities)
-        
-        print("viewDidLoad called")
-
-        // Do any additional setup after loading the view.
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        print("view will appear")
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        //activities = User.user.createdActivities
+        DataBase.data.getActivities()
+        activities = DataBase.data.activities
         
-        // everytime the view will appear we make a network request and we will wait on the main thread...
-        // it is not very scalable as of right now..
-        firstly {
-            DataBase.getActivities()
-        }.done { activities in
-            // we could wrap al this in a DispatchQueue.main.async{} block or in the done block like this
-            // .done(on: DispatchQueue.main) { ... -> but this is not needed as everything is executed on the main thread
-            // anyway. However that is not ideal, as it slows down our app response time
-            self.activities = activities
-        }.catch { error in
-            print(error)
-        }
-        
-//        print(activities)
-        print(ActivityWrapper.wrap(for: activities))
-        
-        // TODO: problem: annotations are not removed, but viewWillAppear is called everytime and will add already existing activity annotations
-        // to the map.. the best way to solve this is to not reload activities in viewWillAppear, but onyl load a single activity after it has been added
-        // however at this point i dont know how I would implement this, so this workaround will do for now.
+        // TODO: on one side, we will want to reload new activities, but on the other if we dont remove the exisiting annotations we get
+        // duplicates. But this solution is not efficieint, as we will unecessarly remove and add annotations
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(ActivityWrapper.wrap(for: activities))
         
         super.viewWillAppear(animated)
     }
     
+    
     // add long press gesture from object library and drag it from the the storyboard to here and tag it as action
     @IBAction func mapLongPressAction(_ sender: Any) {
-        print("long press detected")
-        print(mapLongPressOutlet.state.rawValue)
-        
-        
         if mapLongPressOutlet.state == .began {
             let currentFingerLocation = mapLongPressOutlet.location(in: mapView)
             let currentMapLocation = mapView.convert(currentFingerLocation, toCoordinateFrom: mapView)
-            print(currentFingerLocation)
-            print(currentMapLocation) // works as expected
-            
             mapCoordinates = currentMapLocation
-            
             // we will now move to the add activity view controller, as described in this article
             // https://appsandbiscuits.com/move-between-view-controllers-with-segues-ios-9-7e231159e8f4
              performSegue(withIdentifier: "addActivitySegue", sender: self)
         }
     }
     
-    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "addActivitySegue" {
             if let navigationController = segue.destination as? UINavigationController {
                 if let receiver = navigationController.topViewController as? AddActivityTableViewController {
@@ -124,14 +90,13 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
                 }
             }
         } else if segue.identifier == "showActivityFromMap" {
-            if let receiver = segue.destination as? ActivityViewController {
+            if let receiver = segue.destination as? ActivityDetailViewController {
                 if let activity = currentlySelectedActivity {
                     receiver.activity = activity
                 }
             }
         }
     }
-    
     
     
     func zoomAndCenter(on centerCoordinate: CLLocationCoordinate2D, zoom: Double) {
@@ -143,27 +108,20 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     }
     
     
-    
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
                 
         if view.annotation is MKClusterAnnotation {
-            
             // zoom and center on marker
             zoomAndCenter(on: (view.annotation?.coordinate)!, zoom: 0.25)
-            
             // deselect marker as we are not interested in it and want to possibly continue zooming
             mapView.deselectAnnotation(view.annotation, animated: false)
-            
             return
         }
         
-            
         let activityWrapper = view.annotation as! ActivityWrapper
         let activity = activityWrapper.activity
         let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
         let activityView = views?[0] as! ActivityView
-        
         activityView.delegate = self
         
         // mapping activity properties to activity view ui elements
@@ -191,7 +149,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         pointOfAnnotationCoord.y -= 50
         let coordOfPoint = mapView.convert(pointOfAnnotationCoord, toCoordinateFrom: mapView)
         mapView.setCenter(coordOfPoint, animated: true)
-//        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
     
     
@@ -208,6 +165,22 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         }
     }
     
+    
+    func action() {
+        // delegate pattern
+        performSegue(withIdentifier: "showActivityFromMap", sender: self)
+    }
+    
+    
+}
+
+
+
+
+
+
+
+//
 //    func mapView(_ mapView: MKMapView, clusterAnnotationForMemberAnnotations memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {
 //
 //        print("--- called")
@@ -216,8 +189,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
 //
 //        return clusterAnnotation
 //    }
-
-    // crash when clicking on cluster --> https://forums.developer.apple.com/message/271061#271061
+//
+//     crash when clicking on cluster --> https://forums.developer.apple.com/message/271061#271061
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 //        print("function mapview called")
 //        if annotation is MKClusterAnnotation {
@@ -228,13 +201,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
 //            return nil
 //        }
 //    }
-    
-    func action() {
-        print("delegate pattern working")
-        performSegue(withIdentifier: "showActivityFromMap", sender: self)
-    }
-    
-    
-}
+//
 
 
