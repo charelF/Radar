@@ -17,24 +17,29 @@ class ActivityListViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        activities = DataBase.data.activities // afterwards we will have to change this code:
-        // the activities that are shown are retrieved from the server
+        
+        DataBase.data.getActivities(completion: {
+            self.activities = DataBase.data.activities
+            self.tableView.reloadData()
+        })
+        
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         // for this to work, we need to set refreshing property in the Uitableviewcontroller in the storyboard to enabled
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
-        
     }
     
     @objc func refresh(sender: AnyObject) {
         print("refresh called")
-        //DataBase.data.getActivities()
-        activities = DataBase.data.activities
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
-        print("refresh finished")
+        DataBase.data.getActivities(completion: {
+            self.activities = DataBase.data.activities
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+            print("refresh finished")
+        })
     }
     
     
@@ -45,6 +50,7 @@ class ActivityListViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityTableViewCell
         // we force cast the cell to be an object of type activity table view cell
 
@@ -55,13 +61,15 @@ class ActivityListViewController: UITableViewController {
         
         cell.setActivity(activity: activity)
         
-        currentRow = indexPath.row
+        
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("the selected row is \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: false)
+        currentRow = indexPath.row
         performSegue(withIdentifier: "showActivityFromList", sender: self)
     }
     

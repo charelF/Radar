@@ -52,13 +52,14 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         // TODO: on one side, we will want to reload new activities, but on the other if we dont remove the exisiting annotations we get
         // duplicates. But this solution is not efficieint, as we will unecessarly remove and add annotations
         mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotations(ActivityWrapper.wrap(for: activities))
+        mapView.addAnnotations(ActivityWrapper.wrap(for: self.activities))
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        // the passed () -> () closure/function is executed as soon as the activities are retrieved
         DataBase.data.getActivities(completion: {
             self.activities = DataBase.data.activities
             self.loadAnnotations()

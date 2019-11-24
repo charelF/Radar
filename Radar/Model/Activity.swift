@@ -59,7 +59,7 @@ struct Activity: Identifiable, Codable, Equatable {
     
     var comments: [Comment] = []
     var participants: [String] = [] // contains the IDs of participants
-    let creatorID: String
+    //let creatorID: String
     
     init(name: String, desc: String, subcategory: Subcategory,
          coordinate: CLLocationCoordinate2D, activityTime: Date) {
@@ -74,7 +74,7 @@ struct Activity: Identifiable, Codable, Equatable {
         
         self.activityTime = activityTime
         
-        self.creatorID = User.user.id
+        //self.creatorID = DataBase.data.user!.id
     }
     
     static func == (lhs: Activity, rhs: Activity) -> Bool {
@@ -117,11 +117,12 @@ struct Comment: Codable {
 }
 
 class User: Codable {
-    let username: String = "charel" // temporary, will later be requested from user upon first opening of app
+    let username: String
     let id: String = UUID().uuidString
     
-    private init(){}
-    static let user = User()
+    init(username: String) {
+        self.username = username
+    }
     
     var createdActivities: [Activity] = []
     var joinedActivities: [Activity] = []

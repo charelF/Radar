@@ -12,6 +12,8 @@ import PromiseKit
 class SettingsTableViewController: UITableViewController {
     
     
+    @IBOutlet weak var username: UILabel!
+    
     @IBAction func testServerConnection(_ sender: Any) {
         
         
@@ -22,8 +24,11 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        username?.text = DataBase.data.user?.username ?? "..."
+    }
+    
 //
 //        // Uncomment the following line to preserve selection between presentations
 //        // self.clearsSelectionOnViewWillAppear = false
