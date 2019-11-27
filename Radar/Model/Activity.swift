@@ -57,12 +57,13 @@ struct Activity: Identifiable, Codable, Equatable {
     
     let id: String = UUID().uuidString
     
-    var comments: [Comment] = []
-    var participants: [String] = [] // contains the IDs of participants
-    //let creatorID: String
+    var participantIDs: [String] = []
+    let creatorID: String
     
     init(name: String, desc: String, subcategory: Subcategory,
-         coordinate: CLLocationCoordinate2D, activityTime: Date) {
+         coordinate: CLLocationCoordinate2D, activityTime: Date,
+         creatorID: String) {
+        
         self.name = name
         self.desc = desc
         
@@ -74,7 +75,7 @@ struct Activity: Identifiable, Codable, Equatable {
         
         self.activityTime = activityTime
         
-        //self.creatorID = DataBase.data.user!.id
+        self.creatorID = creatorID
     }
     
     static func == (lhs: Activity, rhs: Activity) -> Bool {
@@ -110,24 +111,20 @@ extension CLLocationCoordinate2D {
 }
 
 
-struct Comment: Codable {
-    let userID: String
-    let content: String
-    let id: String = UUID().uuidString
-}
+//struct Comment: Codable {
+//    let userID: String
+//    let content: String
+//    let id: String = UUID().uuidString
+//}
 
-class User: Codable {
+struct User: Codable, Equatable {
     let username: String
     let id: String = UUID().uuidString
     
-    init(username: String) {
-        self.username = username
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.username == rhs.username
     }
-    
-    var createdActivities: [Activity] = []
-    var joinedActivities: [Activity] = []
 }
-
 
 enum Category: String, Codable, CaseIterable {
     case sport = "Sport"
@@ -177,37 +174,29 @@ enum Subcategory: String, Codable, CaseIterable {
         for (key, value) in dict {
             tuples.append((key, value))
         }
-        print("inside func", dict, tuples)
         return tuples
     }
 }
 
 
-enum UserContext {
-    case created
-    case participates
-    case participated
-    case nearby
-}
-
-
 // testData
 
-let testData: [Activity] = [
-    Activity(name: "dungeons and dragons",
-             desc: "lets meet for some dnd games! We're a group of 3 people needing one more motivated person to join so we can play. If you are interested, join the activity and we can discuss details in the description",
-             subcategory: .boardgame,
-             coordinate: CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935),
-             activityTime: Date()
-    ),
-    
-    Activity(name: "Fussbal match",
-             desc: "fussbal match zu cruchten",
-             subcategory: .soccer,
-             coordinate: CLLocationCoordinate2D(latitude: 49.621622, longitude: 6.161935),
-             activityTime: Date()
-    )
-]
+//let testData: [Activity] = [
+//    Activity(name: "dungeons and dragons",
+//             desc: "lets meet for some dnd games! We're a group of 3 people needing one more motivated person to join so we can play. If you are interested, join the activity and we can discuss details in the description",
+//             subcategory: .boardgame,
+//             coordinate: CLLocationCoordinate2D(latitude: 49.631622, longitude: 6.171935),
+//             activityTime: Date(),
+//             creatorID: DataBase.data.user!.id
+//    ),
+//
+//    Activity(name: "Fussbal match",
+//             desc: "fussbal match zu cruchten",
+//             subcategory: .soccer,
+//             coordinate: CLLocationCoordinate2D(latitude: 49.621622, longitude: 6.161935),
+//             activityTime: Date()
+//    )
+//]
 
 
 

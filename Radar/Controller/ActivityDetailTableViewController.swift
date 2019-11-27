@@ -42,7 +42,7 @@ class ActivityDetailTableViewController: UITableViewController {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return activity?.comments.count ?? 0
+        //case 2: return activity?.comments.count ?? 0
         default: return 0
         }
     }

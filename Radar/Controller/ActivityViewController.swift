@@ -13,7 +13,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     var activity: Activity? = nil
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activity?.comments.count ?? 0
+        return 0 // return activity?.comments.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

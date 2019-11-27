@@ -205,7 +205,8 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         
         
         let activity = Activity(name: name, desc: desc, subcategory: subcategory, coordinate: coordinates,
-                                activityTime: Time.timeTupleToDate(partOfWeek: partOfWeek, partOfDay: partOfDay))
+                                activityTime: Time.timeTupleToDate(partOfWeek: partOfWeek, partOfDay: partOfDay),
+                                creatorID: DataBase.data.user!.id)
         
         DataBase.data.addActivity(activity)
         

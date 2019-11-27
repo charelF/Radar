@@ -32,9 +32,10 @@ import PromiseKit
 
 import MapKit
 
-enum CustomRequestError: Error {
-    case urlError
-    case responseError
+
+public struct Query: QueryParams {
+    // protocol QueryParams is in KituraContracts, not Kitura ...
+    let username: String
 }
 
 class DataBase {
@@ -45,22 +46,15 @@ class DataBase {
     
     var activities: [Activity] = []
     var user: User? = nil
-    let client: KituraKit
+    var client: KituraKit
+    
     
     private init(){
-//        client = KituraKit(baseURL:"\(address):\(port)") ??
-        client = KituraKit(baseURL:"localhost:8080")!
+        client = KituraKit(baseURL:"\(address):\(port)")!
     }
-    
     static let data = DataBase()
     
-    static func getActivities(near: CLLocationCoordinate2D, radius: Int = 10) {
-        
-    }
     
-    static func getActivities(from: User, context: UserContext) {
-        
-    }
     
     func getActivitiesPromise() -> Promise<[Activity]> {
         // returns all activities on server, used for testing
@@ -79,7 +73,8 @@ class DataBase {
         print("we try to acces: /user?username=\(username)")
         // returns all activities on server, used for testing
         return Promise { seal in
-            self.client.get("/user?username=\(username)") { (response: User?, error: RequestError?) -> Void in
+            let q = Query(username: username)
+            self.client.get("/user", query: q) { (response: User?, error: RequestError?) -> Void in
                 guard let user = response else {
                     return seal.reject(error!)
                 }
