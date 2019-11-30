@@ -118,11 +118,10 @@ extension CLLocationCoordinate2D {
 //}
 
 struct User: Codable, Equatable {
-    let username: String
-    let id: String = UUID().uuidString
+    var id: String = UUID().uuidString
     
     static func == (lhs: User, rhs: User) -> Bool {
-        return lhs.username == rhs.username
+        return lhs.id == rhs.id
     }
 }
 

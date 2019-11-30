@@ -24,6 +24,11 @@ import Foundation
 import KituraKit
 import KituraContracts
 import PromiseKit
+// with XCode 11.2, a strange bug errors occurs with PromiseKit:
+// solution:
+// 1) what: https://github.com/mxcl/PromiseKit/issues/1099#issuecomment-548976601
+// 2) how: https://stackoverflow.com/a/7313830/9439097
+
 
 // if above import create error, we need to add the dependencies.
 // added dependencies with File > Swift Packages > Add Package Dependency
@@ -32,12 +37,6 @@ import PromiseKit
 
 import MapKit
 
-
-public struct Query: QueryParams {
-    // protocol QueryParams is in KituraContracts, not Kitura ...
-    let username: String
-}
-
 class DataBase {
     
 //    let address: String = "192.168.178.116"
@@ -45,12 +44,24 @@ class DataBase {
     let port: String = "8080"
     
     var activities: [Activity] = []
-    var user: User? = nil
+    let user: User
     var client: KituraKit
     
     
     private init(){
         client = KituraKit(baseURL:"\(address):\(port)")!
+        
+        // check if its the first run
+        let alreadyRun = UserDefaults.standard.bool(forKey: "alreadyRun")
+        
+        if alreadyRun {
+            let userID = UserDefaults.standard.string(forKey: "userID")!
+            self.user = User(id: userID)
+        } else {
+            self.user = User() // generate new user locally
+            UserDefaults.standard.set(self.user.id, forKey: "userID")
+            UserDefaults.standard.set(true, forKey: "alreadyRun")
+        }
     }
     static let data = DataBase()
     
@@ -69,19 +80,19 @@ class DataBase {
         }
     }
     
-    func getUserPromise(_ username: String) -> Promise<User> {
-        print("we try to acces: /user?username=\(username)")
-        // returns all activities on server, used for testing
-        return Promise { seal in
-            let q = Query(username: username)
-            self.client.get("/user", query: q) { (response: User?, error: RequestError?) -> Void in
-                guard let user = response else {
-                    return seal.reject(error!)
-                }
-                seal.fulfill(user)
-            }
-        }
-    }
+//    func getUserPromise(_ username: String) -> Promise<User> {
+//        print("we try to acces: /user?username=\(username)")
+//        // returns all activities on server, used for testing
+//        return Promise { seal in
+//            let q = Query(username: username)
+//            self.client.get("/user", query: q) { (response: User?, error: RequestError?) -> Void in
+//                guard let user = response else {
+//                    return seal.reject(error!)
+//                }
+//                seal.fulfill(user)
+//            }
+//        }
+//    }
     
     // using this kind of escaping completion seems to be the way to go to do it.
     // inspiration: https://github.com/mxcl/PromiseKit/issues/627#issuecomment-305372795
@@ -108,36 +119,42 @@ class DataBase {
     }
     
     
-    func login(username: String, completion: @escaping (Bool) -> Void) {
-        
-        firstly {
-            self.getUserPromise(username)
-        }.done{ user in
-            
-            // once the user has logged in, we need to remember this
-            // and not ask again in the future.
-            // methods to make data persistent in iOS:
-            // https://medium.com/@imranjutt/data-persistence-in-ios-2804d04bde62
-            // here we use UserDefaults, as it is enough for our case
-            // https://learnappmaking.com/userdefaults-swift-setting-getting-data-how-to/
-            
-            UserDefaults.standard.set(user.id, forKey: "userID")
-            UserDefaults.standard.set(true, forKey: "loggedIn")
-            
-            self.user = user
-            
-            completion(true)
-            
-        }.catch { error in
-            print(error)
-            completion(false)
-        }
-        
-        
-        return
-        
-        
-    }
+//    func createUser()
+    
+    
+//    func login(username: String, completion: @escaping (Bool) -> Void) {
+//
+//        print(UserDefaults.standard.bool(forKey: "loggedIn"))
+//        //UserDefaults.standard.set(true, forKey: "loggedIn")
+////
+////        firstly {
+////            self.getUserPromise(username)
+////        }.done{ user in
+////
+////            // once the user has logged in, we need to remember this
+////            // and not ask again in the future.
+////            // methods to make data persistent in iOS:
+////            // https://medium.com/@imranjutt/data-persistence-in-ios-2804d04bde62
+////            // here we use UserDefaults, as it is enough for our case
+////            // https://learnappmaking.com/userdefaults-swift-setting-getting-data-how-to/
+////
+////            UserDefaults.standard.set(user.id, forKey: "userID")
+////            UserDefaults.standard.set(true, forKey: "loggedIn")
+////
+////            self.user = user
+////
+//            completion(true)
+////
+////        }.catch { error in
+////            print(error)
+////            completion(false)
+////        }
+//
+//
+//        return
+//
+//
+//    }
     
 //    func participateInActivity(_ activity: Activity) {
 //        if !(activity.participants.contains(User.user.id)) && activity.creatorID != User.user.id {

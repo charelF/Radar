@@ -16,26 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let loggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
+        // check if it is the first start:
         
-        // https://stackoverflow.com/questions/26753925/set-initial-viewcontroller-in-appdelegate-swift
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        
-        let initialViewController: UIViewController
-            
-        if loggedIn {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "mainScreen")
-        } else {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "loginScreen")
-        }
-
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
+//        
+//        // https://stackoverflow.com/questions/26753925/set-initial-viewcontroller-in-appdelegate-swift
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        
+//        let initialViewController: UIViewController
+//            
+//        if loggedIn {
+//            initialViewController = storyboard.instantiateViewController(withIdentifier: "mainScreen")
+//        } else {
+//            initialViewController = storyboard.instantiateViewController(withIdentifier: "loginScreen")
+//        }
+//
+//        self.window?.rootViewController = initialViewController
+//        self.window?.makeKeyAndVisible()
 
         return true
-            }
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

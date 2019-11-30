@@ -26,7 +26,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        username?.text = DataBase.data.user?.username ?? "..."
+        username?.text = DataBase.data.user.id
     }
     
 //
