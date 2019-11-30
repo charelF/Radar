@@ -80,3 +80,26 @@ protocol ActivityViewDelegate {
     // using delegate pattern -> https://stackoverflow.com/a/45936716/9439097
     func action()
 }
+
+
+// how to use this nib inside another view / vc:
+// 1) define a container view: @IBOutlet weak var activityViewContainer: UIView!
+
+//2) define this in the view did load:
+//override func viewDidLoad() {
+//    super.viewDidLoad()
+//
+//    let views = Bundle.main.loadNibNamed("ActivityView", owner: nil, options: nil)
+//    let activityView = views?[0] as! ActivityView
+//
+//    activityView.titleLabel.text = activity?.name
+//    activityView.emojiLabel.text = activity?.emoji
+//    activityView.dateLabel.text = Time.stringFromDate(from: activity?.activityTime ?? Date())
+//    activityView.descriptionTextView.text = activity?.desc
+//
+//    // adding the view
+//    activityViewContainer.addSubview(activityView)
+//
+//    // centering the view in the container
+//    activityView.center = activityViewContainer.convert(activityViewContainer.center, from: activityViewContainer.superview)
+//}

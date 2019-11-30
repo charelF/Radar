@@ -14,9 +14,7 @@ import CoreLocation
 class AddActivityTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var typePicker: UIPickerView!
-//    var pickerData: [(String,[String])] = []
     var pickerData: [(Category,[Subcategory])] = []
-//    var pickerValue: (String?,String?) = (nil,nil)
     var pickerValue: (Category?,Subcategory?) = (nil,nil)
     
     
@@ -93,15 +91,10 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
     // number of rows per column in Picker
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
-            //pickerView.reloadComponent(1)
-            //pickerView.selectRow(0, inComponent: 1, animated: true)
-
             return pickerData.count
         } else {
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
             return pickerData[selectedRowInFirstComponent].1.count
-            
-            // research if dics are ordered or not
         }
     }
 
@@ -131,7 +124,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
             print(pickerData[selectedRowInFirstComponent].1[0]) // last subscript is 0, because we reset comp 2 to first element
             
-            //pickerValue = pickerData[selectedRowInFirstComponent].1[0]
             pickerValue = (pickerData[selectedRowInFirstComponent].0, pickerData[selectedRowInFirstComponent].1[0])
         } else {
             let selectedRowInFirstComponent = pickerView.selectedRow(inComponent: 0)
@@ -143,34 +135,11 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         }
     }
     
-    // how to display the pickerView
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        var pickerLabel: UILabel? = (view as? UILabel)
-//        if pickerLabel == nil {
-//            pickerLabel = UILabel()
-//            pickerLabel?.font = UIFont.systemFont(ofSize: 20.0)
-//        }
-//
-//        if component == 0 {
-//            pickerLabel?.textAlignment = .right
-//            pickerLabel?.text = (pickerLabel?.text ?? "none") + "         "
-//        } else {
-//            pickerLabel?.textAlignment = .left
-//            pickerLabel?.text = "         " + (pickerLabel?.text ?? "none")
-//        }
-//
-//
-//        pickerLabel?.textColor = UIColor.red
-//
-//        return pickerLabel!
-//    }
-
-    
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    // to stylise the picke view: https://stackoverflow.com/questions/32026074/formatting-alignment-of-uipickerview
+    // to customise the picke view: https://stackoverflow.com/questions/32026074/formatting-alignment-of-uipickerview
         
     @IBAction func save(_ sender: Any) {
         
@@ -209,14 +178,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
                                 creatorID: DataBase.data.user.id)
         
         DataBase.data.addActivity(activity)
-        
-        
-        // everything seems to work, just the map view controllers (and the others) are not updated
-        // how do we update it?
-        // 1) -> https://medium.com/livefront/why-isnt-viewwillappear-getting-called-d02417b00396
-        // no real solution found, other than set the modal style to .fullscreen in storyboard, which will
-        // call the viewWillAppear method of the mapviewcontroller
-        
         
         dismiss(animated: true, completion: nil)
     }

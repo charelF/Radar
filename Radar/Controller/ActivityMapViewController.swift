@@ -35,8 +35,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    var activities: [Activity] = []
-    
     override func viewDidLoad() {
         print("view did load was called")
         super.viewDidLoad()
@@ -46,13 +44,14 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         
         // also copied from mapkit tutorial
         mapView.register(ActivityAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+
     }
     
     func loadAnnotations() {
         // TODO: on one side, we will want to reload new activities, but on the other if we dont remove the exisiting annotations we get
         // duplicates. But this solution is not efficieint, as we will unecessarly remove and add annotations
         mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotations(ActivityWrapper.wrap(for: self.activities))
+        mapView.addAnnotations(ActivityWrapper.wrap(for: DataBase.data.activities))
     }
     
     
@@ -61,7 +60,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         
         // the passed () -> () closure/function is executed as soon as the activities are retrieved
         DataBase.data.getActivities(completion: {
-            self.activities = DataBase.data.activities
             self.loadAnnotations()
         })
         
@@ -140,11 +138,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         view.addSubview(activityView)
         
         currentlySelectedActivity = activity
-
-//        let button = UIButton(frame: activityView.starbucksPhone.frame)
-//        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
-//        activityView.addSubview(button)
-        // 3
         
         // we center the activity view a bit on the annotation (actually a bit lower)
         activityView.center = CGPoint(x: view.bounds.size.width / 2, y: view.bounds.size.height*0.37)
@@ -175,7 +168,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         // delegate pattern
         performSegue(withIdentifier: "showActivityFromMap", sender: self)
     }
-    
     
 }
 

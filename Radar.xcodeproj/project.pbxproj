@@ -16,10 +16,7 @@
 		3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */; };
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
 		3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */; };
-		3C380AEF236B535200947E97 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AEE236B535200947E97 /* ActivityViewController.swift */; };
-		3C380AF12370B22F00947E97 /* ActivityDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */; };
 		3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */; };
-		3C380AF5237354CE00947E97 /* ParticipateActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */; };
 		3C380B232380087200947E97 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380B222380087200947E97 /* DataBase.swift */; };
 		3C380B2623800A3600947E97 /* KituraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C380B2523800A3600947E97 /* KituraKit */; };
 		3C380B2923800A8C00947E97 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C380B2823800A8C00947E97 /* PromiseKit */; };
@@ -27,7 +24,6 @@
 		3C380B2D23893CE400947E97 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */; };
 		3C5BE199235D9C71005C8862 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE198235D9C71005C8862 /* Time.swift */; };
 		3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */; };
-		3C5D19FF238AE5C600DE0DDA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D19FE238AE5C600DE0DDA /* LoginViewController.swift */; };
 		3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */; };
 		3CEA5A64234D1D2800B25189 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA5A63234D1D2800B25189 /* ActivityView.xib */; };
 		3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA5A65234D1EA300B25189 /* ActivityView.swift */; };
@@ -46,16 +42,12 @@
 		3C1C322923452F40000C6B0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
-		3C380AEE236B535200947E97 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Radar/Controller/ActivityViewController.swift; sourceTree = SOURCE_ROOT; };
-		3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityDetailTableViewController.swift; path = Radar/Controller/ActivityDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailTableViewCell.swift; sourceTree = "<group>"; };
-		3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateActivityTableViewCell.swift; sourceTree = "<group>"; };
 		3C380B222380087200947E97 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		3C380B2A238015BF00947E97 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		3C5BE198235D9C71005C8862 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewController.swift; sourceTree = "<group>"; };
-		3C5D19FE238AE5C600DE0DDA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Radar/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAnnotationView.swift; sourceTree = "<group>"; };
 		3CEA5A63234D1D2800B25189 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		3CEA5A65234D1EA300B25189 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -119,14 +111,11 @@
 		3C5BE19B235D9F11005C8862 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3C380AEE236B535200947E97 /* ActivityViewController.swift */,
 				3C1C32232341F634000C6B0E /* ActivityListViewController.swift */,
 				3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */,
 				3C5BE19E235DA3DC005C8862 /* AddActivityTableViewController.swift */,
-				3C380AF02370B22F00947E97 /* ActivityDetailTableViewController.swift */,
 				3C380B2A238015BF00947E97 /* SettingsTableViewController.swift */,
 				3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */,
-				3C5D19FE238AE5C600DE0DDA /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,7 +135,6 @@
 			children = (
 				3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */,
 				3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */,
-				3C380AF4237354CE00947E97 /* ParticipateActivityTableViewCell.swift */,
 				3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */,
 				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
 				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
@@ -235,22 +223,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C5D19FF238AE5C600DE0DDA /* LoginViewController.swift in Sources */,
 				3C5BE199235D9C71005C8862 /* Time.swift in Sources */,
 				3C380B2D23893CE400947E97 /* ActivityDetailViewController.swift in Sources */,
 				3C380B232380087200947E97 /* DataBase.swift in Sources */,
 				3C1C32202341E669000C6B0E /* Activity.swift in Sources */,
 				3C5BE19F235DA3DC005C8862 /* AddActivityTableViewController.swift in Sources */,
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
-				3C380AF12370B22F00947E97 /* ActivityDetailTableViewController.swift in Sources */,
 				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
 				3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */,
 				3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
-				3C380AEF236B535200947E97 /* ActivityViewController.swift in Sources */,
 				3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */,
 				3C380B2B238015BF00947E97 /* SettingsTableViewController.swift in Sources */,
-				3C380AF5237354CE00947E97 /* ParticipateActivityTableViewCell.swift in Sources */,
 				3CEA5A62234BCB4E00B25189 /* ActivityAnnotationView.swift in Sources */,
 				3C1C320E234090C5000C6B0E /* AppDelegate.swift in Sources */,
 			);

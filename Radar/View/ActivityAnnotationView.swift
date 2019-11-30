@@ -18,11 +18,8 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
             // 1
             guard let activityWrapper = newValue as? ActivityWrapper else { return }
             let activity = activityWrapper.activity
-
             canShowCallout = false
-//            calloutOffset = CGPoint(x: -5, y: 5)
-//            rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-//            leftCalloutAccessoryView = UISwitch()
+            
             // 2
             markerTintColor = UIColor.white
             glyphText = String(activity.emoji)
@@ -31,36 +28,6 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
             subtitleVisibility = .hidden
             
             clusteringIdentifier = "1"
-            //displayPriority = .required
-//
-//
-//            let detailLabel = UILabel()
-//            detailLabel.numberOfLines = 0
-//            detailLabel.font = detailLabel.font.withSize(12)
-//            detailLabel.text = activity.subtitle
-//            //detailCalloutAccessoryView = detailLabel
-//
-//            //titleVisibility = .hidden
-//            subtitleVisibility = .hidden
-//
-//            //self.addSubview(detailLabel)
-//
-////            let emojiLabel = UILabel()
-////            emojiLabel.numberOfLines = 0
-////            emojiLabel.font = emojiLabel.font.withSize(20)
-////            emojiLabel.text = activity.emoji
-////            leftCalloutAccessoryView = emojiLabel
-//
-////            let frame = CGRect(x: 10, y: 10, width: 50, height: 50)
-////
-////            let blueSquare = UIView(frame: frame)
-////            blueSquare.backgroundColor = UIColor.blue
-////
-////            detailCalloutAccessoryView = blueSquare
-//
-//
-//
-//
         }
     }
     
@@ -89,16 +56,4 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
         }
         return isInside
     }
-    
-        
-    }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-
+}
