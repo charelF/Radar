@@ -38,12 +38,12 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         // this nice code selects ALL activities where (AT LEAST ONE of the keywords contains part of the query)
         // AND (if the owner is all, then TRUE, else we check if the activity id matches the internal user id)
         
-        filteredActivities = sortedActivities.filter { activity in
-            return activity.keyWords.contains { keyword in
+        filteredActivities = orderedActivities.filter { activity in
+            return (activity.keyWords.contains { keyword in
                 keyword.lowercased().contains(query.lowercased())
-            } && owner == .all ? true : activity.creatorID == DataBase.data.user.id
+            }) && (owner == .all ? true : activity.creatorID == DataBase.data.user.id)
         }
-        
+
         tableView.reloadData()
     }
     
@@ -52,13 +52,14 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
     }
     
     var isFiltering: Bool {
+        
         let searchBarScopeFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty || searchBarScopeFiltering)
     }
     
     
     var filteredActivities: [Activity] = []
-    var sortedActivities: [Activity] = []
+    var orderedActivities: [Activity] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -74,7 +75,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         super.viewWillAppear(animated)
         
         DataBase.data.getActivities(completion: {
-            self.sortedActivities = self.retrieveAndSortActivities()
+            self.orderedActivities = self.retrieveAndSortActivities()
             self.tableView.reloadData()
         })
         
@@ -101,7 +102,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
     @objc func refresh(sender: AnyObject) {
         print("refresh called")
         DataBase.data.getActivities(completion: {
-            self.sortedActivities = self.retrieveAndSortActivities()
+            self.orderedActivities = self.retrieveAndSortActivities()
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
             print("refresh finished")
@@ -111,7 +112,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltering ? filteredActivities.count : sortedActivities.count
+        return isFiltering ? filteredActivities.count : orderedActivities.count
     }
 
     
@@ -121,7 +122,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         // we force cast the cell to be an object of type activity table view cell
 
         // Configure the cell... activity is either filterd or not, and found at indexPath.row
-        let activity: Activity = isFiltering ? filteredActivities[indexPath.row] : sortedActivities[indexPath.row]
+        let activity: Activity = isFiltering ? filteredActivities[indexPath.row] : orderedActivities[indexPath.row]
         
         cell.setActivity(activity: activity)
         
@@ -134,7 +135,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         
         if segue.identifier == "showActivityFromList" {
-            let activity: Activity = isFiltering ? filteredActivities[indexPath.row] : sortedActivities[indexPath.row]
+            let activity: Activity = isFiltering ? filteredActivities[indexPath.row] : orderedActivities[indexPath.row]
             receiver.activity = activity
         }
     }

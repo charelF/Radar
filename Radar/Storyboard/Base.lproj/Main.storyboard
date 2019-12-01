@@ -87,14 +87,14 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🚴‍♂️" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dt8-qK-dv0">
                                             <rect key="frame" x="14" y="15" width="60" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="bKd-MP-qWY"/>
+                                                <constraint firstAttribute="width" constant="60" id="McA-7o-K9A"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="54"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-H5-oaR">
-                                            <rect key="frame" x="82" y="54" width="74" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-H5-oaR">
+                                            <rect key="frame" x="82" y="54" width="272" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -105,27 +105,28 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8t-6N-wee">
-                                            <rect key="frame" x="82" y="35" width="31" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8t-6N-wee">
+                                            <rect key="frame" x="82" y="35" width="30.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="iJR-H5-oaR" firstAttribute="top" secondItem="bNm-AF-GZE" secondAttribute="topMargin" constant="20" id="1fV-xa-Eu5"/>
-                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="trailing" secondItem="iJR-H5-oaR" secondAttribute="trailing" id="88D-oG-dyw"/>
-                                        <constraint firstItem="dt8-qK-dv0" firstAttribute="leading" secondItem="bNm-AF-GZE" secondAttribute="leadingMargin" constant="-6" id="CBZ-YC-lKQ"/>
-                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="top" secondItem="bNm-AF-GZE" secondAttribute="topMargin" id="KaD-Lf-0yB"/>
-                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="trailing" secondItem="bNm-AF-GZE" secondAttribute="trailingMargin" id="POx-hW-iVj"/>
-                                        <constraint firstItem="dt8-qK-dv0" firstAttribute="bottom" secondItem="iJR-H5-oaR" secondAttribute="bottom" id="WNU-KR-dXx"/>
-                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="leading" secondItem="iJR-H5-oaR" secondAttribute="leading" id="mfi-kk-wLr"/>
-                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="leading" secondItem="dt8-qK-dv0" secondAttribute="trailing" constant="8" id="pOJ-nc-99h"/>
-                                        <constraint firstItem="dt8-qK-dv0" firstAttribute="centerY" secondItem="bNm-AF-GZE" secondAttribute="centerY" id="qeF-ue-dcr"/>
+                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="trailing" secondItem="iJR-H5-oaR" secondAttribute="trailing" id="0r6-LH-dx8"/>
+                                        <constraint firstItem="iJR-H5-oaR" firstAttribute="top" secondItem="z8t-6N-wee" secondAttribute="bottom" constant="2" id="6Zt-cb-El1"/>
+                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="top" secondItem="bNm-AF-GZE" secondAttribute="topMargin" id="K4u-uG-nWz"/>
+                                        <constraint firstItem="dt8-qK-dv0" firstAttribute="centerY" secondItem="bNm-AF-GZE" secondAttribute="centerY" id="N9M-zO-9pT"/>
+                                        <constraint firstItem="z8t-6N-wee" firstAttribute="leading" secondItem="iJR-H5-oaR" secondAttribute="leading" id="RV6-PL-ZQ6"/>
+                                        <constraint firstItem="dt8-qK-dv0" firstAttribute="leading" secondItem="bNm-AF-GZE" secondAttribute="leadingMargin" constant="-6" id="XnZ-O3-cbB"/>
+                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="leading" secondItem="z8t-6N-wee" secondAttribute="leading" id="ZGy-ey-qWN"/>
+                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="trailing" secondItem="bNm-AF-GZE" secondAttribute="trailingMargin" id="iD5-D0-lyu"/>
+                                        <constraint firstItem="z8t-6N-wee" firstAttribute="top" secondItem="iG4-qT-uOP" secondAttribute="bottom" constant="2" id="lWZ-xg-tYs"/>
+                                        <constraint firstItem="iG4-qT-uOP" firstAttribute="leading" secondItem="dt8-qK-dv0" secondAttribute="trailing" constant="8" id="rw2-zt-wxO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityDate" destination="z8t-6N-wee" id="7I8-FZ-IPE"/>
                                     <outlet property="activityDescription" destination="iJR-H5-oaR" id="ad2-YO-c8u"/>
                                     <outlet property="activityIcon" destination="dt8-qK-dv0" id="3Bk-6f-e4Z"/>
                                     <outlet property="activityTitle" destination="iG4-qT-uOP" id="hqh-Sn-0Bs"/>

@@ -16,7 +16,6 @@
 		3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */; };
 		3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */; };
 		3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */; };
-		3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */; };
 		3C380B232380087200947E97 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C380B222380087200947E97 /* DataBase.swift */; };
 		3C380B2623800A3600947E97 /* KituraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C380B2523800A3600947E97 /* KituraKit */; };
 		3C380B2923800A8C00947E97 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C380B2823800A8C00947E97 /* PromiseKit */; };
@@ -42,7 +41,6 @@
 		3C1C322923452F40000C6B0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C1C322A234885E0000C6B0E /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
-		3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3C380B222380087200947E97 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		3C380B2A238015BF00947E97 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		3C380B2C23893CE400947E97 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			children = (
 				3CEA5A61234BCB4E00B25189 /* ActivityAnnotationView.swift */,
 				3C1C3225234520D1000C6B0E /* ActivityTableViewCell.swift */,
-				3C380AF22370BA9E00947E97 /* ActivityDetailTableViewCell.swift */,
 				3CEA5A65234D1EA300B25189 /* ActivityView.swift */,
 				3CEA5A63234D1D2800B25189 /* ActivityView.xib */,
 				3C2E674E23579E58001F4F10 /* UITextViewFixed.swift */,
@@ -231,7 +228,6 @@
 				3C1C322B234885E0000C6B0E /* ActivityMapViewController.swift in Sources */,
 				3CEA5A66234D1EA300B25189 /* ActivityView.swift in Sources */,
 				3C2E674F23579E58001F4F10 /* UITextViewFixed.swift in Sources */,
-				3C380AF32370BA9E00947E97 /* ActivityDetailTableViewCell.swift in Sources */,
 				3C1C3226234520D1000C6B0E /* ActivityTableViewCell.swift in Sources */,
 				3C1C32242341F634000C6B0E /* ActivityListViewController.swift in Sources */,
 				3C380B2B238015BF00947E97 /* SettingsTableViewController.swift in Sources */,
