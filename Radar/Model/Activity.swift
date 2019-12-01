@@ -81,6 +81,13 @@ struct Activity: Identifiable, Codable, Equatable {
     static func == (lhs: Activity, rhs: Activity) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    var keyWords: [String] {
+        return [self.name,
+                self.emoji,
+                self.category.rawValue,
+                self.subcategory.rawValue]
+    }
 }
 
 // activity can now be encoded and decoded like this:
@@ -130,7 +137,6 @@ enum Category: String, Codable, CaseIterable {
     case game = "Game"
 }
 
-
 enum Subcategory: String, Codable, CaseIterable {
     case soccer = "Soccer"
     case basketball = "Basketball"
@@ -176,7 +182,6 @@ enum Subcategory: String, Codable, CaseIterable {
         return tuples
     }
 }
-
 
 // testData
 

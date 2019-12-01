@@ -93,8 +93,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description that is multiple lines long as you can see" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-H5-oaR">
-                                            <rect key="frame" x="82" y="31" width="272" height="44"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-H5-oaR">
+                                            <rect key="frame" x="82" y="54" width="74" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -103,6 +103,13 @@
                                             <rect key="frame" x="82" y="11" width="272" height="22"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                             <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8t-6N-wee">
+                                            <rect key="frame" x="82" y="35" width="31" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -122,6 +129,7 @@
                                     <outlet property="activityDescription" destination="iJR-H5-oaR" id="ad2-YO-c8u"/>
                                     <outlet property="activityIcon" destination="dt8-qK-dv0" id="3Bk-6f-e4Z"/>
                                     <outlet property="activityTitle" destination="iG4-qT-uOP" id="hqh-Sn-0Bs"/>
+                                    <segue destination="ZV2-6V-js2" kind="show" identifier="showActivityFromList" id="dVq-6G-lCA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -136,13 +144,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
-                    <connections>
-                        <segue destination="ZV2-6V-js2" kind="show" identifier="showActivityFromList" id="cJH-Oq-Qaf"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWo-Vg-y6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="0.0"/>
+            <point key="canvasLocation" x="986.95652173913049" y="0.0"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SRD-t2-2Dn">
@@ -527,7 +532,7 @@
         <scene sceneID="Myz-BB-yKo">
             <objects>
                 <viewController id="ZV2-6V-js2" customClass="ActivityDetailViewController" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="KQb-3u-kYc">
+                    <view key="view" contentMode="scaleToFill" id="KQb-3u-kYc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -549,7 +554,7 @@
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-g6-b8W">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-g6-b8W">
                                 <rect key="frame" x="20" y="760" width="374" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="dwK-au-A6f"/>
@@ -647,6 +652,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cJH-Oq-Qaf"/>
+        <segue reference="dVq-6G-lCA"/>
     </inferredMetricsTieBreakers>
 </document>

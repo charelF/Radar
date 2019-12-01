@@ -11,7 +11,7 @@ import PromiseKit
 
 class SettingsTableViewController: UITableViewController {
     
-    @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var username: UILabel!
     
     @IBAction func testServerConnection(_ sender: Any) {
         
@@ -21,7 +21,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        id?.text = DataBase.data.user.id
+        username?.text = DataBase.data.user.id
     }
     
 }
