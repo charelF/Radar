@@ -16,13 +16,14 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        let owner = ActivityOwner.allCases[searchBar.selectedScopeButtonIndex]
+        let owner = ActivityContext.allCases[searchBar.selectedScopeButtonIndex]
         filterActivities(for: searchBar.text!, owner: owner)
     }
     
-    enum ActivityOwner: String, CaseIterable {
+    enum ActivityContext: String, CaseIterable {
         case all = "All"
         case me = "Mine"
+        case participating = "Participating"
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -33,17 +34,27 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
     }
     
     // filter the activities and put only the wanted activities in the local filteredActivities array
-    func filterActivities(for query: String, owner: ActivityOwner) {
-        
-        // this nice code selects ALL activities where (AT LEAST ONE of the keywords contains part of the query)
-        // AND (if the owner is all, then TRUE, else we check if the activity id matches the internal user id)
+    func filterActivities(for query: String, owner: ActivityContext) {
         
         filteredActivities = orderedActivities.filter { activity in
-            return (activity.keyWords.contains { keyword in
+            
+            // check if at least one of the keywords contains part of the query, or the query is empty, then we continue, otherwhise we return false
+            guard (activity.keyWords.contains { (keyword) in
                 keyword.lowercased().contains(query.lowercased())
-            }) && (owner == .all ? true : activity.creatorID == DataBase.data.user.id)
+            } || (query == "")) else {
+                return false
+            }
+            
+            // check the context of the activity
+            switch owner {
+            case .all:
+                return true
+            case .me:
+                return (activity.creatorID == DataBase.data.user.id)
+            case .participating:
+                return (activity.participantIDs.contains(DataBase.data.user.id))
+            }
         }
-
         tableView.reloadData()
     }
     
@@ -95,7 +106,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         definesPresentationContext = true
         
         // for the scope bar
-        searchController.searchBar.scopeButtonTitles = ActivityOwner.allCases.map {$0.rawValue}
+        searchController.searchBar.scopeButtonTitles = ActivityContext.allCases.map {$0.rawValue}
         searchController.searchBar.delegate = self
     }
     

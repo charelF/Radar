@@ -52,10 +52,14 @@ struct Activity: Identifiable, Codable, Equatable {
         }
     }
     
-    let creationTime: Date = Date()
+    let creationTime: Date
     let activityTime: Date
     
-    let id: String = UUID().uuidString
+//    let id: String = UUID().uuidString
+    // while the above way of initialising an activity might look nice, it causes problems
+    // when the activity is decoded from JSON, as these values are newly computed so the
+    // decoded activity gets a new uuid!
+    let id: String
     
     var participantIDs: [String] = []
     let creatorID: String
@@ -74,8 +78,11 @@ struct Activity: Identifiable, Codable, Equatable {
         self.customCoordinate = Coordinate(coordinate)
         
         self.activityTime = activityTime
+        self.creationTime = Date()
+        self.id = UUID().uuidString
         
         self.creatorID = creatorID
+        self.participantIDs.append(creatorID)
     }
     
     static func == (lhs: Activity, rhs: Activity) -> Bool {

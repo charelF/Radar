@@ -43,7 +43,10 @@ class DataBase {
     let address: String = "localhost"
     let port: String = "8080"
     
-    var activities: [Activity] = []
+    //var activities: [Activity] = []
+    
+    var activities: [String:Activity] = [:]
+    
     let user: User
     var client: KituraKit
     
@@ -70,7 +73,7 @@ class DataBase {
     func getActivitiesPromise() -> Promise<[Activity]> {
         // returns all activities on server, used for testing
         return Promise { seal in
-            self.client.get("/activities") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
+            self.client.get("/activity") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
                 // either activities or error is nil, the other has a value
                 guard let activities = activitiyResponse else {
                     return seal.reject(error!)
@@ -101,23 +104,71 @@ class DataBase {
             self.getActivitiesPromise()
         }.done { activities in
             print("just retrieved \(activities.count) activities from the server")
-            self.activities = activities
+            // we now map [activity] to [activity.id:activity] for easier lookup
+            // we first transform it via map into an array of tuples, and then
+            // we transform the array into a dictionary.
+            self.activities = Dictionary(uniqueKeysWithValues: activities.map {
+                ($0.id,$0) })
             completion() // will execute the passed function/closure
         }.catch { error in
             print(error)
         }
     }
     
-    func addActivity(_ activity: Activity) {
-        self.client.put("/activities", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
-            guard let _ = activityResponse else {
-                print("Error while adding activity: \(String(describing: error))")
-                return
+    func addActivity(_ activity: Activity) -> Promise<Activity> {
+        return Promise { seal in
+            self.client.put("/activity", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
+                guard let _ = activityResponse else {
+                    print("Error while adding activity: \(String(describing: error))")
+                    return seal.reject(error!)
+                }
+                print("succesfully added activity")
+                seal.fulfill(activityResponse!)
             }
-            print("succesfully added activity")
         }
     }
     
+    func switchActivityParticipation(for activityID: String, completion: @escaping () -> Void) {
+        // currently the only operation that modifies an activity
+        
+        // only thing to watch out is that we are not the creator
+        // however for this prototype we wont check this as there are currently no other
+        // users so this check will cause troubles...
+        
+        var newActivity: Activity = activities[]
+        
+        if activity.participantIDs.contains(self.user.id) {
+            // we do not want to participate anymore
+            print("unparticipate")
+            newActivity.participantIDs = activity.participantIDs.filter {$0 != self.user.id}
+        } else {
+            print("participate")
+            // we want to participate
+            newActivity.participantIDs.append(self.user.id)
+        }
+        
+        // in any case, the addActivity method will PUT (update) the currently existing activity with this new one
+        print(newActivity.participantIDs.count)
+        
+        firstly {
+            self.addActivity(newActivity)
+        }.done { activity in
+            completion(activity) // we let the caller know whether the change he did
+            // was executed succesfully, in any case the caller gets the same activity
+            // as the one that is now on the server
+        }.catch { _ in 
+            print("error")
+        }
+        
+    }
+}
+    
+
+
+
+
+
+
     
 //    func createUser()
     
@@ -156,20 +207,8 @@ class DataBase {
 //
 //    }
     
-//    func participateInActivity(_ activity: Activity) {
-//        if !(activity.participants.contains(User.user.id)) && activity.creatorID != User.user.id {
-//            self.client.put("/activity/participate", identifier: User.user.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
-//            guard let _ = activityResponse else {
-//                print("Error while adding activity: \(String(describing: error))")
-//                return
-//            }
-//            print("succesfully added activity")
-//        }
-//    }
-//    }
     
 
-}
 
 
 

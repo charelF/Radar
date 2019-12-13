@@ -29,8 +29,26 @@ class ActivityDetailViewController: UIViewController {
         
     }
     
+    func changeButtonStyle(isUserParticipating) {
+        if userParticipating {
+            print("changed button style to user participating")
+            /
+            
+            // Note to charel from the future:
+            // currently there is a problem: e.g. this view controller has an activity property. it sends it to the database, which updates the activity on the server and everything should work. the problem is that the updated activity (where the user participation choice is now switched) is not yet sent to this viewcontroller, so if we call the function again, it sends the initila activity again to the server, because this VC does not know there is an updated version
+            // TODO: somehow we have to update this controllers current copy of the activity... but how? and do we also need to reload our activites array that is stored in the parent of this viewcontroller (or inside the database? because it also does not have the correct version. perhaps easiest is to do that, but even then we need to propagate the changed activity also to this VC
+            
+            
+        }
+        
+    }
+    
     @IBAction func participateButton(_ sender: Any) {
-        print("participated")
+        DataBase.data.switchActivityParticipation(for: activity!, completion: { activity in
+            let isUserParticipating = activity.participantIDs.contains(DataBase.data.user.id)
+            
+            self.changeButtonStyle(isUserParticipating)
+        })
     }
     
 }
