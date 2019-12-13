@@ -20,11 +20,7 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         filterActivities(for: searchBar.text!, owner: owner)
     }
     
-    enum ActivityContext: String, CaseIterable {
-        case all = "All"
-        case me = "Mine"
-        case participating = "Participating"
-    }
+
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         switch selectedScope {
@@ -75,7 +71,9 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
     let searchController = UISearchController(searchResultsController: nil)
     
     func retrieveAndSortActivities() -> [Activity] {
-        let activities = DataBase.data.activities
+        // additionally we transform activities dictionary back into an array
+        // this simplifies the implementation, but is not ideal
+        let activities = Array(DataBase.data.activities.values)
         return activities.sorted { (a1, a2) -> Bool in
             a1.activityTime < a2.activityTime
         }
@@ -147,7 +145,8 @@ class ActivityListViewController: UITableViewController, UISearchResultsUpdating
         
         if segue.identifier == "showActivityFromList" {
             let activity: Activity = isFiltering ? filteredActivities[indexPath.row] : orderedActivities[indexPath.row]
-            receiver.activity = activity
+            // however the receiver will again receive just an id
+            receiver.activityID = activity.id
         }
     }
 

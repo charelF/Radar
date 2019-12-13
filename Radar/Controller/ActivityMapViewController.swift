@@ -28,7 +28,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
     
     var mapCoordinates: CLLocationCoordinate2D? = nil
     
-    var currentlySelectedActivity: Activity?
+    var currentlySelectedActivityID: String?
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -94,8 +94,8 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
             }
         } else if segue.identifier == "showActivityFromMap" {
             if let receiver = segue.destination as? ActivityDetailViewController {
-                if let activity = currentlySelectedActivity {
-                    receiver.activity = activity
+                if let activityID = currentlySelectedActivityID {
+                    receiver.activityID = activityID
                 }
             }
         }
@@ -128,7 +128,6 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         activityView.delegate = self
         
         // mapping activity properties to activity view ui elements
-        print(activity.name)
         activityView.titleLabel.text = activity.name
         activityView.emojiLabel.text = activity.emoji
         activityView.dateLabel.text = Time.stringFromDate(from: activity.activityTime)
@@ -137,7 +136,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
         // adding the view
         view.addSubview(activityView)
         
-        currentlySelectedActivity = activity
+        currentlySelectedActivityID = activity.id
         
         // we center the activity view a bit on the annotation (actually a bit lower)
         activityView.center = CGPoint(x: view.bounds.size.width / 2, y: view.bounds.size.height*0.37)
@@ -157,7 +156,7 @@ class ActivityMapViewController: UIViewController, MKMapViewDelegate, ActivityVi
                 // solve the actual bug: why it was removed here, and not in the example
                 if subview is ActivityView {
                     subview.removeFromSuperview()
-                    currentlySelectedActivity = nil
+                    currentlySelectedActivityID = nil
                 }
             }
         }

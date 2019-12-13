@@ -11,8 +11,15 @@ import MapKit
 
 class ActivityDetailViewController: UIViewController {
     
-    var activity: Activity? = nil
+    var activityID: String? = nil
+    var activity: Activity? {
+        get {
+            // if ID is not set, return nil
+            return DataBase.data.activities[activityID ?? ""]
+        }
+    }
     
+    @IBOutlet weak var participateButtonOutlet: UIButton!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -29,25 +36,21 @@ class ActivityDetailViewController: UIViewController {
         
     }
     
-    func changeButtonStyle(isUserParticipating) {
-        if userParticipating {
-            print("changed button style to user participating")
-            /
-            
-            // Note to charel from the future:
-            // currently there is a problem: e.g. this view controller has an activity property. it sends it to the database, which updates the activity on the server and everything should work. the problem is that the updated activity (where the user participation choice is now switched) is not yet sent to this viewcontroller, so if we call the function again, it sends the initila activity again to the server, because this VC does not know there is an updated version
-            // TODO: somehow we have to update this controllers current copy of the activity... but how? and do we also need to reload our activites array that is stored in the parent of this viewcontroller (or inside the database? because it also does not have the correct version. perhaps easiest is to do that, but even then we need to propagate the changed activity also to this VC
-            
-            
+    func changeButtonStyle() {
+        
+        if self.activity!.participantIDs.contains(DataBase.data.user.id) {
+            participateButtonOutlet.titleLabel!.text = "You have joined!"
+        } else {
+            participateButtonOutlet.titleLabel!.text = "Join this activity!"
         }
+        self.viewDidLoad()
+        // in any way, we also reload and collect the updated actitivy
         
     }
     
     @IBAction func participateButton(_ sender: Any) {
-        DataBase.data.switchActivityParticipation(for: activity!, completion: { activity in
-            let isUserParticipating = activity.participantIDs.contains(DataBase.data.user.id)
-            
-            self.changeButtonStyle(isUserParticipating)
+        DataBase.data.switchActivityParticipation(for: activityID!, completion: {
+            self.changeButtonStyle()
         })
     }
     

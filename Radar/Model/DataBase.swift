@@ -41,9 +41,7 @@ class DataBase {
     
 //    let address: String = "192.168.178.116"
     let address: String = "localhost"
-    let port: String = "8080"
-    
-    //var activities: [Activity] = []
+    let port: String = "8081"
     
     var activities: [String:Activity] = [:]
     
@@ -83,19 +81,30 @@ class DataBase {
         }
     }
     
-//    func getUserPromise(_ username: String) -> Promise<User> {
-//        print("we try to acces: /user?username=\(username)")
-//        // returns all activities on server, used for testing
-//        return Promise { seal in
-//            let q = Query(username: username)
-//            self.client.get("/user", query: q) { (response: User?, error: RequestError?) -> Void in
-//                guard let user = response else {
-//                    return seal.reject(error!)
-//                }
-//                seal.fulfill(user)
-//            }
-//        }
-//    }
+    // currently not in use
+    func getActivityPromise(_ activityID: String) -> Promise<Activity> {
+        return Promise { seal in
+            self.client.get("/activity", identifier: activityID) { (response: Activity?, error: RequestError?) -> Void in
+                guard let activity = response else {
+                    return seal.reject(error!)
+                }
+                seal.fulfill(activity)
+            }
+        }
+    }
+    
+    // currently not in use
+    func updateActivity(_ activityID: String, completion: @escaping () -> Void) {
+        firstly {
+            getActivityPromise(activityID)
+        }.done { activity in
+            // we update the existing activity
+            self.activities[activityID] = activity
+            completion()
+        }.catch { error in
+            print(error)
+        }
+    }
     
     // using this kind of escaping completion seems to be the way to go to do it.
     // inspiration: https://github.com/mxcl/PromiseKit/issues/627#issuecomment-305372795
@@ -116,6 +125,7 @@ class DataBase {
     }
     
     func addActivity(_ activity: Activity) -> Promise<Activity> {
+        print("the sent activity has \(activity.participantIDs.count) participants")
         return Promise { seal in
             self.client.put("/activity", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
                 guard let _ = activityResponse else {
@@ -135,7 +145,8 @@ class DataBase {
         // however for this prototype we wont check this as there are currently no other
         // users so this check will cause troubles...
         
-        var newActivity: Activity = activities[]
+        let activity = activities[activityID]!
+        var newActivity: Activity = activity
         
         if activity.participantIDs.contains(self.user.id) {
             // we do not want to participate anymore
@@ -151,11 +162,15 @@ class DataBase {
         print(newActivity.participantIDs.count)
         
         firstly {
+            // we update the activity on the server, which sends back the updated version
             self.addActivity(newActivity)
         }.done { activity in
-            completion(activity) // we let the caller know whether the change he did
-            // was executed succesfully, in any case the caller gets the same activity
-            // as the one that is now on the server
+            // we add the updated activity to the global list
+            self.activities[activity.id] = activity
+            // we let the caller know whether the change he did
+            // was executed succesfully, in any case the modified activity has the same
+            // id so we dont need to return anything
+            completion()
         }.catch { _ in 
             print("error")
         }

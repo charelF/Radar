@@ -177,7 +177,7 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
                                 activityTime: Time.timeTupleToDate(partOfWeek: partOfWeek, partOfDay: partOfDay),
                                 creatorID: DataBase.data.user.id)
         
-        DataBase.data.addActivity(activity)
+        _ = DataBase.data.addActivity(activity)
         
         dismiss(animated: true, completion: nil)
     }

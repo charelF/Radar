@@ -22,12 +22,16 @@ class ActivityWrapper: NSObject, MKAnnotation {
         self.subtitle = activity.desc
     }
     
-    static func wrap(for activities: [Activity]) -> [ActivityWrapper] {
-        var activityWrapper: [ActivityWrapper] = []
-        for activity in activities {
-            activityWrapper.append(ActivityWrapper(activity))
-        }
-        return activityWrapper
+//    static func wrap(for activities: [Activity]) -> [ActivityWrapper] {
+//        var activityWrapper: [ActivityWrapper] = []
+//        for activity in activities {
+//            activityWrapper.append(ActivityWrapper(activity))
+//        }
+//        return activityWrapper
+//    }
+    
+    static func wrap(for activities: [String:Activity]) -> [ActivityWrapper] {
+        return activities.map { ActivityWrapper($1) }
     }
             
 }
@@ -188,6 +192,12 @@ enum Subcategory: String, Codable, CaseIterable {
         }
         return tuples
     }
+}
+
+enum ActivityContext: String, CaseIterable {
+    case all = "All"
+    case me = "Mine"
+    case participating = "Participating"
 }
 
 // testData

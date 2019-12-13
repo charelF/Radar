@@ -533,7 +533,7 @@
         <scene sceneID="Myz-BB-yKo">
             <objects>
                 <viewController id="ZV2-6V-js2" customClass="ActivityDetailViewController" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KQb-3u-kYc">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="KQb-3u-kYc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -555,7 +555,7 @@
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-g6-b8W">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-g6-b8W">
                                 <rect key="frame" x="20" y="760" width="374" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="dwK-au-A6f"/>
@@ -623,6 +623,7 @@
                         <outlet property="descriptionTextView" destination="i4F-26-0T9" id="yBa-dg-szf"/>
                         <outlet property="emojiLabel" destination="OcL-pK-Fue" id="Z5m-uP-sBq"/>
                         <outlet property="locationMapView" destination="Gr7-qm-Jd8" id="DdS-su-BMl"/>
+                        <outlet property="participateButtonOutlet" destination="0ge-g6-b8W" id="b3k-ua-ea4"/>
                         <outlet property="titleLabel" destination="SaK-D2-Aer" id="4iX-x2-1KJ"/>
                     </connections>
                 </viewController>
