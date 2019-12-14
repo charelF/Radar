@@ -146,22 +146,34 @@ struct User: Codable, Equatable {
 enum Category: String, Codable, CaseIterable {
     case sport = "Sport"
     case game = "Game"
+    case social = "Social"
 }
 
 enum Subcategory: String, Codable, CaseIterable {
     case soccer = "Soccer"
     case basketball = "Basketball"
     case tennis = "Tennis"
+    case climbing = "Climbing"
     
     case videogame = "Videogame"
     case boardgame = "Boardgame"
+    case actiongame = "Actiongame"
+    
+    case bar = "Bar"
     
     var category: Category {
         switch self {
-        case .soccer, .basketball, .tennis:
+        case .soccer,
+             .basketball,
+             .tennis,
+             .climbing:
             return .sport
-        case .videogame, .boardgame:
+        case .videogame,
+             .boardgame,
+             .actiongame:
             return .game
+        case .bar:
+            return .social
         }
     }
     
@@ -170,9 +182,13 @@ enum Subcategory: String, Codable, CaseIterable {
         case .soccer: return "⚽️"
         case .basketball: return "🏀"
         case .tennis: return "🥎"
+        case .climbing: return "🧗"
         
         case .videogame: return "🎮"
         case .boardgame: return "🎲"
+        case .actiongame: return "🔫"
+        
+        case .bar: return "🍺"
         }
     }
     
@@ -190,7 +206,7 @@ enum Subcategory: String, Codable, CaseIterable {
         for (key, value) in dict {
             tuples.append((key, value))
         }
-        return tuples
+        return tuples.sorted(by: {$0.0.rawValue > $1.0.rawValue})
     }
 }
 

@@ -533,7 +533,7 @@
         <scene sceneID="Myz-BB-yKo">
             <objects>
                 <viewController id="ZV2-6V-js2" customClass="ActivityDetailViewController" customModule="Radar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="KQb-3u-kYc">
+                    <view key="view" contentMode="scaleToFill" id="KQb-3u-kYc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -555,17 +555,6 @@
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-g6-b8W">
-                                <rect key="frame" x="20" y="760" width="374" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="dwK-au-A6f"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Join this activity!"/>
-                                <connections>
-                                    <action selector="participateButton:" destination="ZV2-6V-js2" eventType="touchUpInside" id="4dt-kR-9hu"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i4F-26-0T9" customClass="UITextViewFixed" customModule="Radar" customModuleProvider="target">
                                 <rect key="frame" x="20" y="317.5" width="374" height="175"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -592,9 +581,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRt-Qb-mvf">
+                                <rect key="frame" x="20" y="766" width="315" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Eo-Cx-d99">
+                                <rect key="frame" x="345" y="761" width="51" height="31"/>
+                                <connections>
+                                    <action selector="participateSwitch:" destination="ZV2-6V-js2" eventType="valueChanged" id="a41-iV-YQ1"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="9Eo-Cx-d99" secondAttribute="trailing" constant="20" id="4a5-JE-DOC"/>
                             <constraint firstItem="Gr7-qm-Jd8" firstAttribute="top" secondItem="i4F-26-0T9" secondAttribute="bottom" constant="10" id="56j-yx-LYH"/>
                             <constraint firstItem="i4F-26-0T9" firstAttribute="top" secondItem="Axd-kP-7ml" secondAttribute="bottom" constant="20" id="7gg-9U-9EN"/>
                             <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="Gr7-qm-Jd8" secondAttribute="trailing" constant="20" id="9Wg-J9-8Ei"/>
@@ -602,16 +604,16 @@
                             <constraint firstItem="OcL-pK-Fue" firstAttribute="top" secondItem="FkF-gC-F6Z" secondAttribute="top" constant="20" id="LSp-Ps-DOh"/>
                             <constraint firstItem="Axd-kP-7ml" firstAttribute="top" secondItem="SaK-D2-Aer" secondAttribute="bottom" constant="15" id="MrY-cS-1cO"/>
                             <constraint firstItem="i4F-26-0T9" firstAttribute="leading" secondItem="FkF-gC-F6Z" secondAttribute="leading" constant="20" id="U5n-uh-EhH"/>
-                            <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="0ge-g6-b8W" secondAttribute="trailing" constant="20" id="ULl-2W-NDe"/>
                             <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="i4F-26-0T9" secondAttribute="trailing" constant="20" id="doh-b4-Jy9"/>
-                            <constraint firstItem="0ge-g6-b8W" firstAttribute="top" secondItem="Gr7-qm-Jd8" secondAttribute="bottom" constant="20" id="eEb-KE-Nim"/>
+                            <constraint firstItem="IRt-Qb-mvf" firstAttribute="top" secondItem="Gr7-qm-Jd8" secondAttribute="bottom" constant="26" id="e7S-X4-4ah"/>
+                            <constraint firstItem="IRt-Qb-mvf" firstAttribute="leading" secondItem="FkF-gC-F6Z" secondAttribute="leading" constant="20" id="e9R-CJ-767"/>
                             <constraint firstItem="SaK-D2-Aer" firstAttribute="top" secondItem="OcL-pK-Fue" secondAttribute="bottom" constant="20" id="g1G-TM-afl"/>
                             <constraint firstItem="Gr7-qm-Jd8" firstAttribute="leading" secondItem="FkF-gC-F6Z" secondAttribute="leading" constant="20" id="htO-Jh-niA"/>
                             <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="OcL-pK-Fue" secondAttribute="trailing" constant="20" id="jFD-Lt-HmL"/>
                             <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="Axd-kP-7ml" secondAttribute="trailing" constant="20" id="ltb-85-8c7"/>
-                            <constraint firstItem="0ge-g6-b8W" firstAttribute="leading" secondItem="FkF-gC-F6Z" secondAttribute="leading" constant="20" id="qMe-AD-fwZ"/>
+                            <constraint firstItem="9Eo-Cx-d99" firstAttribute="top" secondItem="Gr7-qm-Jd8" secondAttribute="bottom" constant="20" id="pjU-oM-s3f"/>
+                            <constraint firstItem="9Eo-Cx-d99" firstAttribute="leading" secondItem="IRt-Qb-mvf" secondAttribute="trailing" constant="10" id="qng-wO-r2y"/>
                             <constraint firstItem="SaK-D2-Aer" firstAttribute="leading" secondItem="FkF-gC-F6Z" secondAttribute="leading" constant="20" id="rRr-2e-Srk"/>
-                            <constraint firstItem="FkF-gC-F6Z" firstAttribute="bottom" secondItem="0ge-g6-b8W" secondAttribute="bottom" constant="20" id="y66-nA-7cH"/>
                             <constraint firstItem="OcL-pK-Fue" firstAttribute="leading" secondItem="FkF-gC-F6Z" secondAttribute="leading" constant="20" id="yQQ-9K-s28"/>
                             <constraint firstItem="FkF-gC-F6Z" firstAttribute="trailing" secondItem="SaK-D2-Aer" secondAttribute="trailing" constant="20" id="yqA-tf-fEX"/>
                         </constraints>
@@ -623,7 +625,8 @@
                         <outlet property="descriptionTextView" destination="i4F-26-0T9" id="yBa-dg-szf"/>
                         <outlet property="emojiLabel" destination="OcL-pK-Fue" id="Z5m-uP-sBq"/>
                         <outlet property="locationMapView" destination="Gr7-qm-Jd8" id="DdS-su-BMl"/>
-                        <outlet property="participateButtonOutlet" destination="0ge-g6-b8W" id="b3k-ua-ea4"/>
+                        <outlet property="participateLabel" destination="IRt-Qb-mvf" id="OaF-Vv-osB"/>
+                        <outlet property="participateSwitch" destination="9Eo-Cx-d99" id="qU0-6W-WxS"/>
                         <outlet property="titleLabel" destination="SaK-D2-Aer" id="4iX-x2-1KJ"/>
                     </connections>
                 </viewController>

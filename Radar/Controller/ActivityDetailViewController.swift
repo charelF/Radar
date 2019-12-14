@@ -19,7 +19,8 @@ class ActivityDetailViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var participateButtonOutlet: UIButton!
+    @IBOutlet weak var participateSwitch: UISwitch!
+    @IBOutlet weak var participateLabel: UILabel!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -33,24 +34,12 @@ class ActivityDetailViewController: UIViewController {
         titleLabel.text = activity?.name ?? "///"
         dateLabel.text = Time.stringFromDate(from: activity?.activityTime ?? Date())
         descriptionTextView.text = activity?.desc ?? "///"
-        
+        participateSwitch.isOn = activity!.participantIDs.contains(DataBase.data.user.id)
+        participateLabel.text = participateSwitch.isOn ? "You are participating!" : "Join this activity!"
     }
     
-    func changeButtonStyle() {
-        
-        if self.activity!.participantIDs.contains(DataBase.data.user.id) {
-            participateButtonOutlet.titleLabel!.text = "You have joined!"
-        } else {
-            participateButtonOutlet.titleLabel!.text = "Join this activity!"
-        }
-        self.viewDidLoad()
-        // in any way, we also reload and collect the updated actitivy
-        
-    }
-    
-    @IBAction func participateButton(_ sender: Any) {
-        DataBase.data.switchActivityParticipation(for: activityID!, completion: {
-            self.changeButtonStyle()
+    @IBAction func participateSwitch(_ sender: Any) { DataBase.data.switchActivityParticipation(for: activityID!, completion: {
+            self.viewDidLoad()
         })
     }
     
