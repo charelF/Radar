@@ -9,24 +9,22 @@
 import UIKit
 import MapKit
 
-// copied from: https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
+// inspiration: https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
 
 class ActivityAnnotationView: MKMarkerAnnotationView {
     
     override var annotation: MKAnnotation? {
         willSet {
-            // 1
+            // we need to get acces to the activity itself to get the emoji
             guard let activityWrapper = newValue as? ActivityWrapper else { return }
             let activity = activityWrapper.activity
             canShowCallout = false
             
-            // 2
+            // specify the appearance of the activity marker on the map
             markerTintColor = UIColor.white
             glyphText = String(activity.emoji)
-            
             titleVisibility = .hidden
             subtitleVisibility = .hidden
-            
             clusteringIdentifier = "1"
         }
     }
@@ -34,22 +32,19 @@ class ActivityAnnotationView: MKMarkerAnnotationView {
     // the two functions below are used to detect whether we click an element inside the activity view or the map
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
-        if (hitView != nil)
-        {
+        if (hitView != nil) {
             self.superview?.bringSubviewToFront(self)
         }
         return hitView
     }
+    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let rect = self.bounds
         var isInside: Bool = rect.contains(point)
-        if(!isInside)
-        {
-            for view in self.subviews
-            {
+        if(!isInside) {
+            for view in self.subviews {
                 isInside = view.frame.contains(point)
-                if isInside
-                {
+                if isInside {
                     break
                 }
             }

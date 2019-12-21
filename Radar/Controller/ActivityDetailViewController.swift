@@ -14,7 +14,6 @@ class ActivityDetailViewController: UIViewController {
     var activityID: String? = nil
     var activity: Activity? {
         get {
-            // if ID is not set, return nil
             return DataBase.data.activities[activityID ?? ""]
         }
     }

@@ -6,51 +6,45 @@
 //  Copyright © 2019 Charel FELTEN. All rights reserved.
 //
 
-// kitura resources:
-// https://developer.ibm.com/swift/2017/10/30/kiturakit-client-side-rest-made-easy/
-
-// more on the programming patterns encountered here: (completion handlers / closures)
-// https://grokswift.com/completion-handlers-in-swift/
-// https://grokswift.com/completion-handler-faqs/
-
-// more on promises:
-// https://www.raywenderlich.com/9208-getting-started-with-promisekit
-
-// the main difficulty / problems seem to be: how to return data, as we dont know when we receive
-// the data (due to network), but can't stop the entire app while we wait for the data.
-// the best solutions seems to be Promises, which we can implement with PromiseKit
-
+import MapKit
 import Foundation
 import KituraKit
 import KituraContracts
 import PromiseKit
-// with XCode 11.2, a strange bug errors occurs with PromiseKit:
-// solution:
-// 1) what: https://github.com/mxcl/PromiseKit/issues/1099#issuecomment-548976601
-// 2) how: https://stackoverflow.com/a/7313830/9439097
+/// if import error: add dependencies with File > Swift Packages > Add Package Dependency
 
+/// kitura resources:
+// https://developer.ibm.com/swift/2017/10/30/kiturakit-client-side-rest-made-easy/
 
-// if above import create error, we need to add the dependencies.
-// added dependencies with File > Swift Packages > Add Package Dependency
-// and then I copy pasted the links from the Package.swift file in the RESTful music Client Demo
+/// more on the programming patterns encountered here: (completion handlers / closures)
+// https://grokswift.com/completion-handlers-in-swift/
+// https://grokswift.com/completion-handler-faqs/
 
+/// more on promises:
+// https://www.raywenderlich.com/9208-getting-started-with-promisekit
+/// promises with completion handler
+// https://github.com/mxcl/PromiseKit/issues/627#issuecomment-305372795
 
-import MapKit
+/// the main difficulty / problems seem to be: how to return data, as we dont know when we receive
+/// the data (due to network), but can't stop the entire app while we wait for the data.
+/// the best solution seems to be Promises, which we can implement with PromiseKit
+
+/// with XCode 11.2, a strange bug errors occurs with PromiseKit:
+// bug: https://github.com/mxcl/PromiseKit/issues/1099#issuecomment-548976601
+// solution: https://stackoverflow.com/a/7313830/9439097
+
 
 class DataBase {
     
-//    let address: String = "192.168.178.116"
-    let address: String = "localhost"
-    let port: String = "8081"
-    
     var activities: [String:Activity] = [:]
     
+    // we have one user instance per app, which is stored in the DataBase singleton
     let user: User
     var client: KituraKit
     
     
     private init(){
-        client = KituraKit(baseURL:"\(address):\(port)")!
+        client = KituraKit(baseURL:"localhost:8081")!
         
         // check if its the first run
         let alreadyRun = UserDefaults.standard.bool(forKey: "alreadyRun")
@@ -64,9 +58,8 @@ class DataBase {
             UserDefaults.standard.set(true, forKey: "alreadyRun")
         }
     }
-    static let data = DataBase()
     
-    
+    static let data = DataBase() // singleton
     
     func getActivitiesPromise() -> Promise<[Activity]> {
         // returns all activities on server, used for testing
@@ -81,7 +74,6 @@ class DataBase {
         }
     }
     
-    // currently not in use
     func getActivityPromise(_ activityID: String) -> Promise<Activity> {
         return Promise { seal in
             self.client.get("/activity", identifier: activityID) { (response: Activity?, error: RequestError?) -> Void in
@@ -93,12 +85,21 @@ class DataBase {
         }
     }
     
-    // currently not in use
+    func addActivity(_ activity: Activity) -> Promise<Activity> {
+        return Promise { seal in
+            self.client.put("/activity", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
+                guard let _ = activityResponse else {
+                    return seal.reject(error!)
+                }
+                seal.fulfill(activityResponse!)
+            }
+        }
+    }
+    
     func updateActivity(_ activityID: String, completion: @escaping () -> Void) {
         firstly {
             getActivityPromise(activityID)
         }.done { activity in
-            // we update the existing activity
             self.activities[activityID] = activity
             completion()
         }.catch { error in
@@ -106,124 +107,45 @@ class DataBase {
         }
     }
     
-    // using this kind of escaping completion seems to be the way to go to do it.
-    // inspiration: https://github.com/mxcl/PromiseKit/issues/627#issuecomment-305372795
     func getActivities(completion: @escaping () -> Void) {
         firstly {
             self.getActivitiesPromise()
         }.done { activities in
-            print("just retrieved \(activities.count) activities from the server")
             // we now map [activity] to [activity.id:activity] for easier lookup
-            // we first transform it via map into an array of tuples, and then
-            // we transform the array into a dictionary.
             self.activities = Dictionary(uniqueKeysWithValues: activities.map {
                 ($0.id,$0) })
-            completion() // will execute the passed function/closure
+            completion()
         }.catch { error in
             print(error)
         }
     }
     
-    func addActivity(_ activity: Activity) -> Promise<Activity> {
-        print("the sent activity has \(activity.participantIDs.count) participants")
-        return Promise { seal in
-            self.client.put("/activity", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
-                guard let _ = activityResponse else {
-                    print("Error while adding activity: \(String(describing: error))")
-                    return seal.reject(error!)
-                }
-                print("succesfully added activity")
-                seal.fulfill(activityResponse!)
-            }
-        }
-    }
-    
+    // switches the participation status of the user for a given activity
     func switchActivityParticipation(for activityID: String, completion: @escaping () -> Void) {
-        // currently the only operation that modifies an activity
-        
-        // only thing to watch out is that we are not the creator
-        // however for this prototype we wont check this as there are currently no other
-        // users so this check will cause troubles...
+        // we should also check that we are not the creator of the activity,
+        // however this functionality is not yet implemted.
         
         let activity = activities[activityID]!
         var newActivity: Activity = activity
         
         if activity.participantIDs.contains(self.user.id) {
             // we do not want to participate anymore
-            print("unparticipate")
             newActivity.participantIDs = activity.participantIDs.filter {$0 != self.user.id}
         } else {
-            print("participate")
             // we want to participate
             newActivity.participantIDs.append(self.user.id)
         }
         
-        // in any case, the addActivity method will PUT (update) the currently existing activity with this new one
-        print(newActivity.participantIDs.count)
-        
         firstly {
-            // we update the activity on the server, which sends back the updated version
+            // we update (with HTTP PUT) the activity on the server, which sends back the updated version
             self.addActivity(newActivity)
         }.done { activity in
-            // we add the updated activity to the global list
+            // we update the activity in our activity list
             self.activities[activity.id] = activity
-            // we let the caller know whether the change he did
-            // was executed succesfully, in any case the modified activity has the same
-            // id so we dont need to return anything
             completion()
-        }.catch { _ in 
-            print("error")
+        }.catch { error in
+            print(error)
         }
-        
     }
 }
     
-
-
-
-
-
-
-    
-//    func createUser()
-    
-    
-//    func login(username: String, completion: @escaping (Bool) -> Void) {
-//
-//        print(UserDefaults.standard.bool(forKey: "loggedIn"))
-//        //UserDefaults.standard.set(true, forKey: "loggedIn")
-////
-////        firstly {
-////            self.getUserPromise(username)
-////        }.done{ user in
-////
-////            // once the user has logged in, we need to remember this
-////            // and not ask again in the future.
-////            // methods to make data persistent in iOS:
-////            // https://medium.com/@imranjutt/data-persistence-in-ios-2804d04bde62
-////            // here we use UserDefaults, as it is enough for our case
-////            // https://learnappmaking.com/userdefaults-swift-setting-getting-data-how-to/
-////
-////            UserDefaults.standard.set(user.id, forKey: "userID")
-////            UserDefaults.standard.set(true, forKey: "loggedIn")
-////
-////            self.user = user
-////
-//            completion(true)
-////
-////        }.catch { error in
-////            print(error)
-////            completion(false)
-////        }
-//
-//
-//        return
-//
-//
-//    }
-    
-    
-
-
-
-

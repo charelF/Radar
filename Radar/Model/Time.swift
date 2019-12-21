@@ -11,7 +11,6 @@ import CoreLocation
 
 // enum tips: https://developerinsider.co/advanced-enum-enumerations-by-example-swift-programming-language/
 
-
 enum PartOfDay: String, CaseIterable {
     case morning = "Morning"
     case noon = "Noon"
@@ -28,8 +27,11 @@ enum PartOfWeek: String, CaseIterable {
 
 class Time {
     
+    // transforms time tuple (.today, .evening) into Date (2019-12-21 14:21:47 +0000)
     static func timeTupleToDate(partOfWeek: PartOfWeek, partOfDay: PartOfDay) -> Date {
-        var finalDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())! // finalDate is today, 00:00:00
+        
+        // finalDate is today, 00:00:00
+        var finalDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
         
         let hourToAdd: Int
         let dayToAdd: Int
@@ -53,10 +55,10 @@ class Time {
         return finalDate
     }
     
-    
+    // transforms Date (2019-12-21 14:21:47 +0000) into time tuple (.today, .evening)
     static func dateToTimeTuple(date: Date) -> (PartOfWeek, PartOfDay) {
-        let currentHour: Int = Calendar.current.component(.hour, from: date)
         
+        let currentHour: Int = Calendar.current.component(.hour, from: date)
         let partOfDay: PartOfDay
         
         switch currentHour {
@@ -73,7 +75,7 @@ class Time {
         return (partOfWeek, partOfDay)
     }
     
-    
+    // transforms time tuple (.today, .evening) into descriptive text ("This evening!")
     static func stringFromTimeTuple(partOfWeek: PartOfWeek, partOfDay: PartOfDay) -> String {
         switch (partOfWeek, partOfDay) {
             case (.today, .noon): return "Around noon"
@@ -83,13 +85,14 @@ class Time {
         }
     }
     
-    
+    // transforms Date (2019-12-21 14:21:47 +0000) into descriptive text ("This evening!")
     static func stringFromDate(from date: Date) -> String {
         let tuple = dateToTimeTuple(date: date)
         return stringFromTimeTuple(partOfWeek: tuple.0, partOfDay: tuple.1)
     }
        
-    
+    // returns all times of day that have not yet passed. E.g. if this function is called at 17:00, it will
+    // return [.afternoon, .evening, .night], but not .morning as the morning has already passed.
     static func getPossibleTimesOfDay() -> [PartOfDay] {
         let currentHour = Calendar.current.component(.hour, from: Date())
         

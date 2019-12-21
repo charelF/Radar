@@ -17,14 +17,11 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
     var pickerData: [(Category,[Subcategory])] = []
     var pickerValue: (Category?,Subcategory?) = (nil,nil)
     
-    
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextViewFixed!
     
     @IBOutlet weak var dateSegment: UISegmentedControl!
     @IBOutlet weak var timeSegment: UISegmentedControl!
-    
-    
     
     var mapCoordinates: CLLocationCoordinate2D? = nil
     
@@ -36,14 +33,13 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
 
         pickerData = Subcategory.getRelations()
 
-        // not sure if necessary
         typePicker.reloadAllComponents()
         typePicker.selectRow(0, inComponent: 0, animated: false)
 
         loadSegments(forDay: .today)
-        
     }
     
+    // loads the possible options for the date and time segmented control
     func loadSegments(forDay day: PartOfWeek) {
         
         let possibleTimes: [PartOfDay]
@@ -62,8 +58,7 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         }
     }
             
-    
-    // triggered when selecting day
+    // triggered when selecting day and reloads segments
     @IBAction func timesForDay(_ sender: Any) {
         
         switch dateSegment.selectedSegmentIndex {
@@ -74,14 +69,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         }
         
     }
-    
-//    @IBAction func debugSegmentedIndex(_ sender: Any) {
-//        
-//        print("number of segments", timeSegment.numberOfSegments)
-//        print("selected segment", timeSegment.selectedSegmentIndex)
-//        print("title", timeSegment.titleForSegment(at: timeSegment.selectedSegmentIndex))
-//    }
-    
     
     // number of columns in Picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -113,7 +100,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
 
             return pickerData[selectedRowInFirstComponent].1[row].rawValue
         }
-        //return pickerData[component].1[row]
     }
 
     // what to do for a specific selection
@@ -139,8 +125,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         dismiss(animated: true, completion: nil)
     }
     
-    // to customise the picke view: https://stackoverflow.com/questions/32026074/formatting-alignment-of-uipickerview
-        
     @IBAction func save(_ sender: Any) {
         
         var partOfWeek: PartOfWeek {
@@ -153,7 +137,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         
         print(dateSegment.numberOfSegments)
         print(dateSegment.selectedSegmentIndex)
-        //print(dateSegment.numberOfSegments - dateSegment.selectedSegmentIndex)
         
         var partOfDay: PartOfDay {
             switch (timeSegment.numberOfSegments - timeSegment.selectedSegmentIndex) {
@@ -171,7 +154,6 @@ class AddActivityTableViewController: UITableViewController, UIPickerViewDelegat
         let desc = descriptionField.text ?? "NODESCRIPTION"
         let subcategory = pickerValue.1 ?? .tennis
         let coordinates = mapCoordinates!
-        
         
         let activity = Activity(name: name, desc: desc, subcategory: subcategory, coordinate: coordinates,
                                 activityTime: Time.timeTupleToDate(partOfWeek: partOfWeek, partOfDay: partOfDay),
