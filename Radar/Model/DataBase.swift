@@ -64,7 +64,7 @@ class DataBase {
     func getActivitiesPromise() -> Promise<[Activity]> {
         // returns all activities on server, used for testing
         return Promise { seal in
-            self.client.get("/activity") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
+            self.client.get("/activities") { (activitiyResponse: [Activity]?, error: RequestError?) -> Void in
                 // either activities or error is nil, the other has a value
                 guard let activities = activitiyResponse else {
                     return seal.reject(error!)
@@ -76,7 +76,7 @@ class DataBase {
     
     func getActivityPromise(_ activityID: String) -> Promise<Activity> {
         return Promise { seal in
-            self.client.get("/activity", identifier: activityID) { (response: Activity?, error: RequestError?) -> Void in
+            self.client.get("/activities", identifier: activityID) { (response: Activity?, error: RequestError?) -> Void in
                 guard let activity = response else {
                     return seal.reject(error!)
                 }
@@ -87,7 +87,7 @@ class DataBase {
     
     func addActivity(_ activity: Activity) -> Promise<Activity> {
         return Promise { seal in
-            self.client.put("/activity", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
+            self.client.put("/activities", identifier: activity.id, data: activity) {(activityResponse: Activity?, error:RequestError?) -> Void in
                 guard let _ = activityResponse else {
                     return seal.reject(error!)
                 }
