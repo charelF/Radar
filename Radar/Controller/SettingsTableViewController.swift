@@ -9,15 +9,10 @@
 import UIKit
 import PromiseKit
 
+/// this view controller was used for debugging throughout the development of the project
 class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var username: UILabel!
-    
-    @IBAction func testServerConnection(_ sender: Any) {
-        
-    }
-    @IBOutlet weak var resultLabel: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

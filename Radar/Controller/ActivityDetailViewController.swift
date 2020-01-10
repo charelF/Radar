@@ -11,7 +11,9 @@ import MapKit
 
 class ActivityDetailViewController: UIViewController {
     
+    // this variables is set in advance by the caller of this view controller
     var activityID: String? = nil
+    
     var activity: Activity? {
         get {
             return DataBase.data.activities[activityID ?? ""]
@@ -37,7 +39,8 @@ class ActivityDetailViewController: UIViewController {
         participateLabel.text = participateSwitch.isOn ? "You are participating!" : "Join this activity!"
     }
     
-    @IBAction func participateSwitch(_ sender: Any) { DataBase.data.switchActivityParticipation(for: activityID!, completion: {
+    @IBAction func participateSwitch(_ sender: Any) {
+        DataBase.data.switchActivityParticipation(for: activityID!, completion: {
             self.viewDidLoad()
         })
     }
