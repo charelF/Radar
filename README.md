@@ -7,3 +7,7 @@ The app was developed during one semester to get more experienced with Swift and
 There is also a backend [Radar-Server](https://github.com/charelF/Radar-Server) and a SwiftUI version [Radar-SwiftUI](https://github.com/charelF/Radar-SwiftUI)
 
 All 3 projects are prototypes and not fully working applications.
+
+| map view     | activity popup | list view      |
+|------------|------------|------------|
+| ![](https://i.imgur.com/YVrDojY.png) | ![](https://i.imgur.com/rYCZ3bJ.png) |  ![](https://i.imgur.com/jgWjzU9.png)
